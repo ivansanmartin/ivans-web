@@ -199,10 +199,14 @@ header .logo h1 {
     margin: 0;
     color: var(--color-texto);
     flex-direction: column;
-    gap: 10px;
     height: 100%;
     margin: 10px;
     
+}
+
+.projects .card .cuerpo-card .techs {
+    display: flex;
+    flex-direction: column;
 }
 
 .projects .card .cuerpo-card p {
@@ -372,9 +376,3 @@ footer .links a:hover {
 
     
 }
-
-
-
-
-
-

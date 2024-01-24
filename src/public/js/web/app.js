@@ -85,14 +85,18 @@ class Project {
             <img src="${value.img}" alt="">
         
                 <div class="cuerpo-card text-wrap text-break">
+                    <div>
                     <h2>${value.name}</h2>
                     <p>${value.description}</p>
-                    
-                    <div class="">
-                        
-                        ${techs.join("")}
                     </div>
-                    <button type="button" class="btn btn-info w-50" onclick="window.open('${value.url}', '_blank')">Ver</button>
+                    
+                    <div class="techs">
+                        <div>
+                            ${techs.join("")}
+
+                        </div>
+                        <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
+                    </div>
         
                 </div>
             </div>
@@ -144,6 +148,15 @@ let projects = new Project("projects", [
         technologies: ["mongodb", "express", "react", "nodejs", "js", "html", "css", "bootstrap"],
         url: "https://binary-decimal-app.vercel.app/",
         created_at: "21/08/2023",
+        last: false,
+    },    {
+        name: "ivsmPanel",
+        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1706040389/ivansanmartin.github.io/kfaixpct9xoolw9giylo.png",
+        description:
+            "ivsmPanel es un layout administrativo adaptable y atractivo para dispositivos grandes y pequeños. Personaliza y amplía fácilmente para crear paneles administrativos únicos. ¡Versatilidad total con un diseño responsive!",
+        technologies: ["js", "html", "css", "bootstrap"],
+        url: "/",
+        created_at: "23/01/2024",
         last: true,
     },
 ]);
@@ -156,10 +169,3 @@ const lastProject = projects.getLastProject()[0];
 lastProjectContent.innerHTML = `⭐ ${lastProject.name}`;
 lastProjectDate.innerHTML = `Creado el ${lastProject.created_at}`
 projectButtonRedirect.href = lastProject.url;
-
-
-
-
-
-
-
