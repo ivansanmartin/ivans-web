@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --text-default: 'Raleway', sans-serif;
+    --color-texto: #000;
+}
+
+* {
+    font-size: var(--text-default);
+}
+
+body {
+    background: url(../../../images/gym.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    
+}
+
+.login {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.container  {
+    display: flex;
+    width: 30%;
+    height: 35%;
+    background: #812020;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70%;
+    height: 70%;
+    text-align: center;
+    align-items: center;
+    
+    
+}
+
+.inputs label {
+    color: #3b0f0f;
+    margin-right: 10px;
+}
+
+
+.inputs input {
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    width: 60%;
+    font-size: 10px;
+    text-align: center;
+}
+
+.inputs button {
+    border: 2px solid white;
+    color: white;
+    width: 60%;
+    height: 20%;
+    cursor: pointer;
+    background: #812020;
+    border-radius: 10px;
+    transition: all 1s;
+
+}
+
+.inputs button:hover {
+    background: #888ec3;
+
+}
+
+.inputs div {
+    width: 100%;
+}
+
+
+.container h1 {
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+    color: #fff;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .container {
+        width: 70%;
+        height: 25%;        
+    }
+
+    .inputs label {
+        color: #3b0f0f;
+        margin-right: 10px;
+    }
+    
+    .inputs input {
+        border: none;
+        border-radius: 10px;
+        height: 30px;
+        width: 70%;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    
+}

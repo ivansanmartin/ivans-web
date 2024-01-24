@@ -1,0 +1,354 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    background-color: #eb0000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+header {
+    justify-content: center; 
+    background-size:10px 10px; 
+    color: #ffffff; 
+    padding: 10px; 
+    text-align: center; 
+
+}
+
+nav {
+    
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px 30px;
+    color: #ed0202;
+    flex-wrap: wrap
+}
+
+
+nav ul {
+    list-style: none; 
+    display: flex; 
+    align-items: center; 
+    flex-wrap: wrap;
+    
+
+}
+
+nav ul li a {
+    text-decoration: none; 
+    color: #ff0000; 
+    font-weight: bold; 
+    font-size: 1.1em; 
+    transition: background-color .5s ease;
+    padding: 10px; 
+}
+
+nav ul li a:hover {
+    background-color: #C891C0; 
+    color: #ffffff; 
+}
+
+
+
+nav ul li a:not(.active) {
+    color: #eb0000; 
+}
+
+
+nav h2 {
+    color: #ffffff; 
+}
+
+
+main {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    padding: 20px; 
+}
+
+
+#secA {
+    background-image: url("img/coquita.png"); 
+    background-size: 45% 100%; 
+    background-position-x: 10%;
+    background-repeat: no-repeat;
+    color: white;   
+    flex-basis: 67%; 
+    margin-bottom: 20px; 
+    padding: 20px; 
+    border-radius: 0px 10px 10px 0px; 
+    height: 700px;
+}
+
+#secA .foto-cocacola {
+    transition: all 1s;
+    width: 300px;
+}
+
+#secA .foto-cocacola:hover {
+    width: 320px;
+    
+}
+
+.info-cocacola {
+    display: flex;
+    float: right;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    height: 80%;
+}
+
+.info-cocacola h2 {
+    color: white;
+    font-size: 50px;
+}
+
+.info-cocacola p {
+    font-size: 30px;
+    
+}
+
+.info-cocacola button {
+    margin-top: 40px;
+    
+    
+}
+
+.info-cocacola button {
+
+    border-style: none;
+    padding: 20px; /*espacio alrededor texto*/
+    width: 60%;
+    background-color: #ffffff; /*color botón*/
+    font-size: 30px;
+    color: red;
+    cursor: pointer;
+
+}       
+
+/* Estilo de la clase fotofea */
+.fotofea {
+    width: 30%; /* establece el ancho del elemento al 30% del ancho del contenedor padre */
+    filter: drop-shadow(0 0 5px #596595); /* añade una sombra a la imagen */
+    border-radius: 0px 10px 0px 10px; /* establece la curvatura de las esquinas de la imagen */
+}
+
+/* Estilo del contenedor de la sección A */
+#contsecA {
+    display: flex; /* establece el contenedor como un elemento flexible */
+    justify-content: space-between; /* distribuye los elementos hijos con un espacio uniforme entre ellos */
+}
+
+/* Estilo de los párrafos dentro de la sección A */
+/* Estilo de la sección principal */
+main section {
+    background-size: 100% 1.2em; /* establece el tamaño de la imagen de fondo */
+    flex-basis: 30%; /* establece el tamaño inicial de la sección en un diseño flexible */
+    margin-bottom: 20px; /* establece un margen inferior de 20px */
+    padding: 20px; /* establece un relleno interno de 20px */
+    border-radius: 0px 10px 10px 0px; /* establece un borde redondeado en la esquina derecha de la sección */
+}
+
+/* Estilo de los títulos de la sección principal */
+main section h2 {
+    margin-bottom: 12px; /* establece un margen inferior de 12px para el título */
+}
+
+/* Estilo de los títulos H2 en general */
+h2 {
+    color: #ffffff; /* establece el color del texto */
+}
+
+/* Estilo del texto de la sección principal */
+main section p {
+    font-size: 0.8em; /* establece el tamaño de la fuente en 0.8em */
+}
+
+#secA {
+    flex-basis: 100%;
+}
+
+/* Estilo de la sección C */
+.secC {
+    display: flex;
+    background-color: #ffffff; /* establece el color de fondo */
+    flex-basis: 100%; /* establece el tamaño de la sección al 100% */
+    margin-bottom: 20px; /* establece un margen inferior de 20px */
+    padding: 20px; /* establece un padding de 20px */
+    border-radius: 10px 10px 10px 10px; /* establece la curvatura de la esquina */
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.secC
+.card  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.secC
+.card
+p {
+    font-size: 20px;
+    text-align: justify;
+}
+
+.secC
+.card
+h1 {
+    font-size: 30px;
+}
+
+
+/* Estilo de las listas ordenadas en las secciones */
+section ol {
+    font-size: 0.8em; /* establece el tamaño de la fuente en 0.8em */
+    padding-left: 15%; /* establece el margen izquierdo en un 15% */
+    padding-top: 10px; /* establece el margen superior en 10px */
+    font-style: italic; /* establece el estilo de la fuente en cursiva */
+}
+
+/* Estilo del pie de página */
+footer {
+    background-color: #454e4d; /* establece el color de fondo */
+    color: #ffffff; /* establece el color del texto */
+    padding: 15px; /* establece el espacio interno alrededor del contenido */
+    font-size: 0.7em; /* establece el tamaño de la fuente */
+    text-align: center; /* establece la alineación del texto en el centro */
+    height: 100%;
+}
+
+/* Estilo de los enlaces del pie de página */
+footer a {
+    color: #ffffff; /* establece el color del texto */
+    text-decoration: none; /* elimina la decoración del texto */
+    font-weight: bold; /* establece el grosor de la fuente a negrita */
+}
+
+/* Estilo de los enlaces del pie de página cuando se pasa el cursor por encima */
+footer a:hover {
+    color: #271b20; /* establece el color del texto cuando se pasa el cursor por encima */
+}
+
+footer p {
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+footer .footer-etc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+}
+
+
+footer .footer-etc .terms-help {
+    display: flex;
+    gap: 300px;
+}
+
+footer .info {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 40%;
+}
+
+footer .info img {
+    margin-top: 30px;
+
+}
+
+footer .info div {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+footer .info div p {
+    margin-left: 30px;
+}
+
+.terminos-condiciones h2 {
+    cursor: pointer;
+}
+
+.ayuda h2 {
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 740px) {
+  
+    #secA {
+        height: 300px;
+        background-size: 45% 70%; 
+        background-position-y: 10%;
+        
+    }
+
+    nav {
+        height: 250px;
+        justify-content: center;
+
+    }
+
+    nav ul {
+        flex-direction: column;
+
+    }
+
+    nav ul li {
+        margin-top: 10px;
+
+    }
+
+    .info-cocacola h2 {
+        font-size: 85%;
+    }
+
+    .info-cocacola p {
+        font-size: 70%;
+    }
+
+    .info-cocacola button {
+        padding: 10px;
+        font-size: 10px;
+    
+    }
+
+    footer .footer-etc {
+        justify-content: center;
+    }
+
+
+    footer .footer-etc .terms-help {
+        padding-top: 50px;
+        flex-wrap: wrap;
+        gap: 100px;
+        justify-content: center;
+    }
+
+    footer .footer-etc .info {
+        justify-content: center;
+    }
+    
+
+}
