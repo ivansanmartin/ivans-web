@@ -3,8 +3,9 @@ const express = require("express")
 const router = express.Router()
 
 
-router.get("/projects", (req, res) => {
-    res.send("projects")
+router.get("/projects/ivsm-panel", (req, res) => {
+    res.render("ivsm-panel/index.ejs")
+
 })
 
 

@@ -196,7 +196,7 @@ let projects = new Project("projects", [
         description:
             "ivsmPanel es un layout administrativo adaptable y atractivo para dispositivos grandes y pequeños. Personaliza y amplía fácilmente para crear paneles administrativos únicos. ¡Versatilidad total con un diseño responsive!",
         technologies: ["js", "html", "css", "bootstrap"],
-        url: "/",
+        url: "/projects/ivsm-panel",
         created_at: "23/01/2024",
         updatedAt() {
             return "No date"   

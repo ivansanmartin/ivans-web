@@ -1,39 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet"  href="/css/web/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    
-    <link rel="shortcut icon " href="/images/logo.jpg">
+<% content = `
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&family=Satisfy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Raleway:wght@300;500&family=Satisfy&display=swap" rel="stylesheet">
-
-    <meta property="og:title" content="Iván San Martín">
-    <meta property="og:description" content="Mi nombre es Iván y soy estudiante de programación, actualmente me encuentro desarrollando mi página web en la cual voy aplicando conocimiento de lo aprendido.">
-    <meta property="og:image" content="https://ivan-sanmartin.com/images/programming.jpg">
-
-    <title>Iván San Martín - Web</title>
-</head>
-<body>
-    
-    <header>
-        <div class="logo">
-            <h1>Iván San Martín</h1>
-        </div>
-          
-    </header>
 
     <div class="sections">
-        
+
         <div class="principal">
 
             <div class="presentation text-wrap text-break">
@@ -100,32 +69,7 @@
     </div>  
 
 
-    <footer>
-        
 
-     <div class="derechos">Iván San Martín, todos los derechos reservados - 2024</div>
-     <div class="links">
-        <ul>
-            <li><a class="fa-brands fa-github fa-lg" href="https://github.com/ivansanmartin" target="_blank"></a></li>
-            <li><a class="fa-brands fa-linkedin fa-lg" href="https://www.linkedin.com/in/ivan-sanmartin/" target="_blank"></a></li>
-            <li><a class="fa-brands fa-instagram fa-lg" href="https://www.instagram.com/smsivan/" target="_blank"></a></li>
-        </ul>
-     </div>
+` %>
 
-
-    </footer>
-
-    <script src="js/web/app.js"></script>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script>
-        let typed = new Typed('#element', {
-          strings: ['¡Hola!', '¡Bienvenido!'],
-          typeSpeed: 50,
-          loop: true
-        });
-
-
-    </script>
-
-</body>
-</html>
+<%- include("partials/base.ejs") %>
