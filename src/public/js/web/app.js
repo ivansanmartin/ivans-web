@@ -76,9 +76,11 @@ class Project {
 
         }
 
-        this.obj.forEach((value) => {
+        this.obj.forEach(async (value) => {
     
             let techs = this.getTechnologiesProject(value.technologies)
+
+            const lastUpdateProject = await value.updatedAt()
             
             this.container.innerHTML += `
             <div class="card card-1">
@@ -95,7 +97,11 @@ class Project {
                             ${techs.join("")}
 
                         </div>
+                        
+                        <p class=" mt-3 text-secondary fst-italic">Última actualización: <span class="text-decoration-underline">${lastUpdateProject}</span></p>
+
                         <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
+
                     </div>
         
                 </div>
@@ -118,6 +124,26 @@ class Project {
     }
 }
 
+
+const getLastUpdateProject = async (projectName) => {
+    const response = await fetch(`https://api.github.com/repos/ivansanmartin/${projectName}`)
+    const data = await response.json()
+    const dateRegex = /(\d{4})-(\d{2})-(\d{2})/
+    const dateUpdated = dateRegex.exec(data.updated_at)
+
+    return dateUpdated[0]
+}
+
+const getProjectCreation = async (projectName) => {
+    const response = await fetch(`https://api.github.com/repos/ivansanmartin/${projectName}`)
+    const data = await response.json()
+    const dateRegex = /(\d{4})-(\d{2})-(\d{2})/
+    const dateCreated = dateRegex.exec(data.created_at)
+
+    return dateCreated[0]
+}
+
+
 let projects = new Project("projects", [
     {
         name: "Sport Gym App",
@@ -127,6 +153,10 @@ let projects = new Project("projects", [
         technologies: ["nodejs", "express", "js", "css", "html", "bootstrap", "ejs"],
         url: "https://github.com/ivansanmartin/sport-gym-app",
         created_at: "05/06/2023",
+        updatedAt() {
+            const sportGym = getLastUpdateProject("sport-gym-app")
+            return sportGym   
+        },
         last: false,
     },
 
@@ -137,7 +167,14 @@ let projects = new Project("projects", [
             "API REST diseñada para desarrolladores juniors que deseen practicar la integración de API's en sus aplicaciones, tanto frontend y backend.",
         technologies: ["nodejs", "express"],
         url: "https://ivansanmartin.vercel.app/project",
-        created_at: "21/08/2023",
+        createdAt() {
+            const binaryDecimalApi = getProjectCreation("binary-decimal-api")
+            return binaryDecimalApi   
+        },
+        updatedAt() {
+            const binaryDecimalApi = getLastUpdateProject("binary-decimal-api")
+            return binaryDecimalApi   
+        },
         last: false,
     },
     {
@@ -148,6 +185,10 @@ let projects = new Project("projects", [
         technologies: ["mongodb", "express", "react", "nodejs", "js", "html", "css", "bootstrap"],
         url: "https://binary-decimal-app.vercel.app/",
         created_at: "21/08/2023",
+        updatedAt() {
+            const binaryDecimalApp = getLastUpdateProject("binary-decimal-app")
+            return binaryDecimalApp
+        },
         last: false,
     },    {
         name: "ivsmPanel",
@@ -157,6 +198,9 @@ let projects = new Project("projects", [
         technologies: ["js", "html", "css", "bootstrap"],
         url: "/",
         created_at: "23/01/2024",
+        updatedAt() {
+            return "No date"   
+        },
         last: true,
     },
 ]);
