@@ -133,7 +133,7 @@ const getLastUpdateProject = async (projectName) => {
 }
 
 const lastUpdate = async () => {
-    const projects = await Promise.race([
+    const projects = await Promise.all([
         getLastUpdateProject("sport-gym-app"),
         getLastUpdateProject("binary-decimal-api"),
         getLastUpdateProject("binary-decimal-app"),
