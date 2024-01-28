@@ -1,0 +1,110 @@
+main {
+    height: auto;
+    margin: 30px;
+}
+
+
+main .app-information {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    margin-top: 10vh;
+    
+}
+
+main .app-information div {
+    width: 70%;
+}
+
+main .app-information .title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main .app-information .title .btn-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+main .app-information .title .btn-info a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main .app-information img {
+    width: 100%;
+    border-radius: 20px;
+    opacity: 0.5;
+    transition: all 1s;
+}
+
+main .app-information img:hover {
+    width: 100%;
+    border-radius: 20px;
+    opacity: 1.0;
+}
+
+
+
+main .learn-more {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: auto;
+}
+
+main .learn-more .info {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+main .learn-more .info .techs {
+    display: flex;
+
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin: 15px;
+    }
+
+    main .app-information {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main .app-information .title {
+        align-items: center;
+        width: 100%;
+    }
+
+    main .app-information .title div {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    main .app-information .image {
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    main .learn-more .info {
+        width: 100%;
+    
+    }
+
+    main .learn-more .info .techs {
+        flex-direction: column;
+    }
+}

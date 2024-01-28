@@ -14,6 +14,7 @@ app.set("port", "3000")
 app.set("app", "ivans-web")
 app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, "/views"));
+app.set("projects", path.join(__dirname, "/projects"));
 app.use(express.static(path.join(__dirname, "public")));
 
 

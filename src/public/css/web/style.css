@@ -11,7 +11,7 @@
     --color-background: #dbd4d4;
     --color-texto: #c9c9c9;
     --text-default: 'Roboto', sans-serif;;
-    --title-color: rgba(1, 195, 140, 0.638);
+    --title-color: white;
     --links-color: rgba(1, 195, 140, 0.638);
 }
 
@@ -70,13 +70,12 @@ header .logo h1 {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    margin: 5vh;
+    margin: 1vh;
     height: auto;
 }
 
 .principal {
     display: flex;
-    color: white;
     align-items: center;
     width: 100%;
     height: auto;
@@ -277,7 +276,7 @@ footer .links a:hover {
     }
 
     .sections .projects .card {
-        width: 80%
+        width: 45%
     }
 
     .sections .principal {
