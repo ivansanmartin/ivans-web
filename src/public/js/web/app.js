@@ -199,7 +199,8 @@ let projects = new Project("projects", [
         url: "/projects/ivsm-panel",
         created_at: "23/01/2024",
         updatedAt() {
-            return "No date"   
+            const ivsmPanel = getLastUpdateProject("ivsm-panel")
+            return ivsmPanel
         },
         last: true,
     },
