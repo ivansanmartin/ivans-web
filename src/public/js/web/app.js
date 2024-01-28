@@ -79,8 +79,6 @@ class Project {
         this.obj.forEach(async (value) => {
     
             let techs = this.getTechnologiesProject(value.technologies)
-
-            const lastUpdateProject = await value.updatedAt()
             
             this.container.innerHTML += `
             <div class="card card-1">
@@ -98,7 +96,7 @@ class Project {
 
                         </div>
                         
-                        <p class=" mt-3 text-secondary fst-italic">Última actualización: <span class="text-decoration-underline">${lastUpdateProject}</span></p>
+                        <p class=" mt-3 text-secondary fst-italic">Última actualización: <span class="text-decoration-underline">${value.updatedAt}</span></p>
 
                         <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
 
@@ -134,83 +132,79 @@ const getLastUpdateProject = async (projectName) => {
     return dateUpdated[0]
 }
 
-const getProjectCreation = async (projectName) => {
-    const response = await fetch(`https://api.github.com/repos/ivansanmartin/${projectName}`)
-    const data = await response.json()
-    const dateRegex = /(\d{4})-(\d{2})-(\d{2})/
-    const dateCreated = dateRegex.exec(data.created_at)
+const lastUpdate = async () => {
+    const projects = await Promise.race([
+        getLastUpdateProject("sport-gym-app"),
+        getLastUpdateProject("binary-decimal-api"),
+        getLastUpdateProject("binary-decimal-app"),
+        getLastUpdateProject("ivsm-panel"),
+    ])
 
-    return dateCreated[0]
+    return projects
 }
 
 
-let projects = new Project("projects", [
-    {
-        name: "Sport Gym App",
-        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/nl1aqvmir1m0mkm9aicy",
-        description:
-            "Aplicación realizada para ser usada en gimnasios y tener mayor control de rutinas y clientes. Despliegue realizado en Fly.io.",
-        technologies: ["nodejs", "express", "js", "css", "html", "bootstrap", "ejs"],
-        url: "https://github.com/ivansanmartin/sport-gym-app",
-        created_at: "05/06/2023",
-        updatedAt() {
-            const sportGym = getLastUpdateProject("sport-gym-app")
-            return sportGym   
-        },
-        last: false,
-    },
 
-    {
-        name: "Binary Decimal API",
-        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/c8oc7i5r8tehx0gyfbcv",
-        description:
-            "API REST diseñada para desarrolladores juniors que deseen practicar la integración de API's en sus aplicaciones, tanto frontend y backend.",
-        technologies: ["nodejs", "express"],
-        url: "https://ivansanmartin.vercel.app/project",
-        createdAt() {
-            const binaryDecimalApi = getProjectCreation("binary-decimal-api")
-            return binaryDecimalApi   
-        },
-        updatedAt() {
-            const binaryDecimalApi = getLastUpdateProject("binary-decimal-api")
-            return binaryDecimalApi   
-        },
-        last: false,
-    },
-    {
-        name: "Binary Decimal App",
-        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/vdfuy0ggdatdk04xm0xi",
-        description:
-            "Aplicacion MERN stack consumiendo mi API Rest de \"Binary Decimal API\". Mi primera aplicación web utilizando Auth0.",
-        technologies: ["mongodb", "express", "react", "nodejs", "js", "html", "css", "bootstrap"],
-        url: "https://binary-decimal-app.vercel.app/",
-        created_at: "21/08/2023",
-        updatedAt() {
-            const binaryDecimalApp = getLastUpdateProject("binary-decimal-app")
-            return binaryDecimalApp
-        },
-        last: false,
-    },    {
-        name: "ivsmPanel",
-        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1706040389/ivansanmartin.github.io/kfaixpct9xoolw9giylo.png",
-        description:
-            "ivsmPanel es un layout administrativo adaptable y atractivo para dispositivos grandes y pequeños. Personaliza y amplía fácilmente para crear paneles administrativos únicos. ¡Versatilidad total con un diseño responsive!",
-        technologies: ["js", "html", "css", "bootstrap"],
-        url: "/projects/ivsm-panel",
-        created_at: "23/01/2024",
-        updatedAt() {
-            const ivsmPanel = getLastUpdateProject("ivsm-panel")
-            return ivsmPanel
-        },
-        last: true,
-    },
-]);
 
-const lastProjectContent = document.getElementById("project");
-const lastProjectDate = document.getElementById("date_created");
-const projectButtonRedirect = document.getElementById("view-lastproject");
-const lastProject = projects.getLastProject()[0];
+(async () => {
+    const lastUpdateProjects = await lastUpdate()
+    const lastProjectContent = document.getElementById("project");
+    const lastProjectDate = document.getElementById("date_created");
+    const projectButtonRedirect = document.getElementById("view-lastproject");
 
-lastProjectContent.innerHTML = `⭐ ${lastProject.name}`;
-lastProjectDate.innerHTML = `Creado el ${lastProject.created_at}`
-projectButtonRedirect.href = lastProject.url;
+    let projects = new Project("projects", [
+        {
+            name: "Sport Gym App",
+            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/nl1aqvmir1m0mkm9aicy",
+            description:
+                "Aplicación realizada para ser usada en gimnasios y tener mayor control de rutinas y clientes. Despliegue realizado en Fly.io.",
+            technologies: ["nodejs", "express", "js", "css", "html", "bootstrap", "ejs"],
+            url: "https://github.com/ivansanmartin/sport-gym-app",
+            created_at: "05/06/2023",
+            updatedAt: lastUpdateProjects[0],
+            last: false,
+        },
+    
+        {
+            name: "Binary Decimal API",
+            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/c8oc7i5r8tehx0gyfbcv",
+            description:
+                "API REST diseñada para desarrolladores juniors que deseen practicar la integración de API's en sus aplicaciones, tanto frontend y backend.",
+            technologies: ["nodejs", "express"],
+            url: "https://ivansanmartin.vercel.app/project",
+            updatedAt: lastUpdateProjects[1],
+            last: false,
+        },
+        {
+            name: "Binary Decimal App",
+            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/f_auto,q_auto/v1/ivansanmartin.github.io/vdfuy0ggdatdk04xm0xi",
+            description:
+                "Aplicacion MERN stack consumiendo mi API Rest de \"Binary Decimal API\". Mi primera aplicación web utilizando Auth0.",
+            technologies: ["mongodb", "express", "react", "nodejs", "js", "html", "css", "bootstrap"],
+            url: "https://binary-decimal-app.vercel.app/",
+            created_at: "21/08/2023",
+            updatedAt: lastUpdateProjects[2],
+            last: false,
+        },    {
+            name: "ivsmPanel",
+            img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1706040389/ivansanmartin.github.io/kfaixpct9xoolw9giylo.png",
+            description:
+                "ivsmPanel es un layout administrativo adaptable y atractivo para dispositivos grandes y pequeños. Personaliza y amplía fácilmente para crear paneles administrativos únicos. ¡Versatilidad total con un diseño responsive!",
+            technologies: ["js", "html", "css", "bootstrap"],
+            url: "/projects/ivsm-panel",
+            created_at: "23/01/2024",
+            updatedAt: lastUpdateProjects[3],
+            last: true,
+        },
+    ]);
+
+
+    const lastProject = projects.getLastProject()[0];
+
+    lastProjectContent.innerHTML = `⭐ ${lastProject.name}`;
+    lastProjectDate.innerHTML = `Creado el ${lastProject.created_at}`
+    projectButtonRedirect.href = lastProject.url;
+
+
+})()
+
