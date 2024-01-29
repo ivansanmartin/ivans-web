@@ -1,5 +1,5 @@
-const { MONGODB_STRING, ADMIN_EMAIL, ADMIN_PASSWORD } = require("../config/environment")
-const { MongoClient } = require("mongodb")
+const { MONGODB_STRING, ADMIN_EMAIL, ADMIN_PASSWORD, ADMIN_USERNAME } = require("../config/environment")
+const { MongoClient, UUID } = require("mongodb")
 const bcrypt = require("bcrypt")
 
 const client = new MongoClient(MONGODB_STRING);
@@ -23,7 +23,7 @@ const connectDatabase = async () => {
                 return;
               }
       
-              adminCollection.insertOne({ email: ADMIN_EMAIL, password: hash });
+              adminCollection.insertOne({ id: crypto.randomUUID(), username: ADMIN_USERNAME, email: ADMIN_EMAIL, password: hash });
               console.log("Admin user created successfully");
             });
           });

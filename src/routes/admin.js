@@ -20,6 +20,9 @@ const { ADMIN_EMAIL } = require("../config/environment")
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/admin", (req, res) => {
+    if (req.session.authorized) {
+        return res.redirect("/admin/panel")
+    }
     res.render("admin/login.ejs")
 
 })
@@ -43,7 +46,9 @@ router.post("/admin", async (req, res, next) => {
         }
 
         if (result) {           
-            req.session.authorized = true
+            req.session.user_id = userFetch.id
+            req.session.username = userFetch.username
+            req.session.authenticated = true
             const verificationCode = Math.floor(Math.random() * 10000) + 1;
             
             await userCollection.updateOne({ email: email }, { $set: {
@@ -53,6 +58,7 @@ router.post("/admin", async (req, res, next) => {
             sendEmailTo("onboarding@resend.dev", ADMIN_EMAIL, "VERIFICATION CODE", `<h1>${verificationCode}</h1>`)
             res.redirect("admin/code-verify")
         } else {
+            req.session.authenticated = false
             return res.send("Contraseña y/o email incorrectos")
 
         
@@ -64,15 +70,18 @@ router.post("/admin", async (req, res, next) => {
       
 })
 
+
 router.get("/admin/code-verify", (req, res) => {
-    if (!req.session.authorized) {
-        return res.redirect("../admin")
+    if (!req.session.authorized && req.session.authenticated) {
+        return res.render("admin/verify.ejs")
+    } else {
+        return res.redirect("/admin")
     }
-    res.render("admin/verify.ejs")
+    
 
 })
 
-router.post("/admin/code-verify", async (req, res) => {
+router.post("/admin/code-verify", async (req, res, next) => {
     const { verification } = req.body
 
     const db = client.db("users")
@@ -84,12 +93,22 @@ router.post("/admin/code-verify", async (req, res) => {
         console.log(userFetch)
         return res.send("Codigo invalido")
     }
-    req.session.authorized = false
 
-    res.send("Valido")
+    req.session.authorized = true
 
+    res.redirect("/admin/panel")
+    
 
+})
 
+router.get("/admin/panel", async (req, res) => {
+    if (!req.session.authenticated) {
+        return res.redirect("/admin")
+    }
+    res.render("admin/index.ejs", {
+        user_id: req.session.user_id,
+        username: req.session.username
+    })
 })
 
 module.exports = {
