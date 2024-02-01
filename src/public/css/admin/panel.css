@@ -1,0 +1,15 @@
+#dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.button-links {
+    display: none;
+
+}
+
+.button-links ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    
+}

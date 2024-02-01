@@ -13,6 +13,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/ivsm-panel/panel-layout/css/panel.css">
+    <link rel="stylesheet" href="/css/admin/panel.css">
     <title>IVSM PANEL</title>
 </head>
 
@@ -23,7 +24,17 @@
             <h1 class="fw-bold">Ivans-Web <span class="special-text">PANEL</span></h1>
             <nav class="mt-5 d-flex flex-column">
                 <ul class="d-flex flex-column gap-5 align-items-start justify-content-start">
-                        <li><a href="">Blog</a></li>
+                    <div class="button">
+                        <a id="dropdown-btn"><span>Blog</span><span><svg id="dropdown-icon" width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="sc-hOPghE sc-eGclJs dpubdz QuantumSidebarMenu-icon QuantumSidebarMenu-iconExpanded"><path d="M16.707 12.707l-6.5 6.5-1.414-1.414L14.586 12 8.793 6.207l1.414-1.414 6.5 6.5a1 1 0 010 1.414z" fill="currentColor"></path></svg></span>
+                        </a>
+                    </div>
+                    <div class="button-links" id="button-links">
+                        <ul>
+                            <li><a href="#">Ver blogs</a></li>
+                            <li><a href="#">Crear blog</a></li>
+                        </ul>
+                    </div>    
+                    
                     <div class="logout d-flex flex-column justify-content-center">
                         <li class="mt-5"><i class="fa-solid fa-right-from-bracket"></i><a href="/projects/ivsm-panel">Logout</a></li>
                     </div>
@@ -74,6 +85,7 @@
 
 
     <script src="/css/ivsm-panel/panel-layout/js/panel.js"></script>
+    <script src="/js/admin/panel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
