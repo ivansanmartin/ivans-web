@@ -1,6 +1,7 @@
 const express = require("express")
 const path = require("path")
 const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session)
 
 
 //DB
@@ -10,10 +11,22 @@ connectDatabase()
 
 //Routers
 const { web } = require("./routes/web")
-const { admin } = require("./routes/admin")
+const { loginAdmin } = require("./routes/admin/login");
+const { blogAdmin } = require("./routes/admin/blogs");
+const { MONGODB_STRING } = require("./config/environment");
 
 
 const app = express()
+
+const store = new MongoDBStore({
+  uri: MONGODB_STRING,
+  collection: "sessions",
+  databaseName: "users"
+})
+
+store.on("error", (error) => {
+  console.log(error)
+})
 
 
 
@@ -29,17 +42,19 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
     session({
       secret: process.env.SESSION_SECRET,
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 
+      },
+      store: store,
       resave: false,
       saveUninitialized: true,
-      cookie: {
-        sameSite: "strict",
-      },
     })
   );    
 
 
 app.use(web)
-app.use(admin)
+app.use(loginAdmin)
+app.use(blogAdmin)
 
 app.get("/", (req, res) => {
     res.render("index")

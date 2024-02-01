@@ -5,15 +5,15 @@ const bcrypt = require("bcrypt")
 const router = express.Router()
 
 //Services
-const { sendEmailTo } = require("../services/send-emails");
+const { sendEmailTo } = require("../../services/send-emails");
 
 
 //DB
 
-const { client } = require("../database/db-connector");
+const { client } = require("../../database/db-connector");
 
 // ENV
-const { ADMIN_EMAIL } = require("../config/environment")
+const { ADMIN_EMAIL } = require("../../config/environment")
 
 
 
@@ -111,6 +111,13 @@ router.get("/admin/panel", async (req, res) => {
     })
 })
 
+
+router.get("/admin/panel/logout", (req, res) => {
+    req.session.destroy()
+    res.redirect("/")
+})
+
+
 module.exports = {
-    admin: router
+    loginAdmin: router
 }

@@ -1,60 +1,58 @@
 <% content = `
 
-
-    <div class="sections">
-
-        <div class="principal">
-
-            <div class="presentation text-wrap text-break">
-                <div class="title"><span id="element"></span> :)</div>
-                <div class="body">
-                    <div>
-                        <p class="text-white-50">Soy Iván San Martín y este es mi sitio web personal en donde podrás encontrar todo mi progreso como programador.</p> 
-                    </div>
-
-                    <div class="mt-5">
-                        ¡Se libre de explorar!
-                    </div>
+<div class="sections">
+    <div class="principal">
+        <div class="presentation text-wrap text-break">
+            <div class="title"><span id="element"></span> :)</div>
+            <div class="body">
+                <div>
+                    <p class="text-white-50">
+                        Soy Iván San Martín y este es mi sitio web personal en
+                        donde podrás encontrar todo mi progreso como
+                        programador.
+                    </p>
                 </div>
-                
 
-            </div>
-
-
-            <div class="recent-project" id="content">
-                <div class="content">
-                    <h1 class="title">Proyecto más reciente</h1>
-
-                    <div class="projects">
-                        <div class="card">
-                            <div id="project"></div>
-                            <div id="date_created"></div>
-
-                            <a class="btn btn-success" href="" id="view-lastproject">Ver proyecto</a>
-                        </div>
-
-                    </div>
-                    
-
-                </div>
-            </div>
-            
-        </div>
-
-    
-        <div class="all-projects">
-            <h1 class="text-start mb-5 fw-bold">Proyectos</h1>
-            <div class="projects" id="projects">
-           
-
-           
+                <div class="mt-5">¡Se libre de explorar!</div>
             </div>
         </div>
 
-        
-        
+        <div class="recent-project" id="content">
+            <div class="content">
+                <h1 class="title">Proyecto más reciente</h1>
 
-        <!-- <div class="redes">
+                <div class="projects">
+                    <div class="card">
+                        <div id="project"></div>
+                        <div id="date_created"></div>
+
+                        <a class="btn btn-success" href="" id="view-lastproject"
+                            >Ver proyecto</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="all-projects">
+        <div class="projects-info">
+            <h1 class="text-start fw-bold">Proyectos</h1>
+            <p class="fs-5 text-white-50">Te invito a echar un vistazo a algunos de mis proyectos personales en programación. Son el resultado de mi dedicación y esfuerzo diario por mejorar mis habilidades. Estoy emocionado de aplicar lo que he aprendido en cualquier proyecto futuro. ¡Acompáñame en este viaje de crecimiento y descubrimiento!</p>
+        </div>
+        <div class="projects" id="projects"></div>
+    </div>
+
+    <div class="blogs">
+        <div class="blogs-info">
+            <h1 class="text-start fw-bold">Blogs</h1>
+
+            <p class="fs-5 text-white-50">¡Conoce mi sección de blogs! Aquí podrás mantenerte al día con mis últimos aprendizajes y descubrimientos en el mundo de la programación y otros. Comparto conocimientos y experiencias sobre temas que me apasionan, con la esperanza de que también te resulten útiles e interesantes.</p>
+        </div>
+        <div class="blogs-all" id="blogs"></div>
+    </div>
+
+    <!-- <div class="redes">
             <h1 class="text-start mb-5 fw-bold"><i class="fa-solid fa-globe text-secondary"></i> Redes</h1>
 
             <div class="socials">
@@ -65,23 +63,16 @@
             </div>
 
         </div> -->
+</div>
 
-    </div>  
+<script src="js/web/app.js"></script>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script>
+    let typed = new Typed("#element", {
+        strings: ["¡Hola!", "¡Bienvenido!"],
+        typeSpeed: 50,
+        loop: true,
+    });
+</script>
 
-
-
-    <script src="js/web/app.js"></script>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script>
-        let typed = new Typed('#element', {
-          strings: ['¡Hola!', '¡Bienvenido!'],
-          typeSpeed: 50,
-          loop: true
-        });
-
-
-    </script>
-
-` %>
-
-<%- include("partials/base.ejs") %>
+` %> <%- include("partials/base.ejs") %>

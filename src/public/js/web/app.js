@@ -122,6 +122,43 @@ class Project {
     }
 }
 
+class Blog {
+    constructor(containerId, obj) {
+        this.container = document.getElementById(containerId);
+        this.obj = obj;
+
+        this.obj.forEach(async (value) => {
+
+            
+            this.container.innerHTML += `
+            <div class="card card-1">        
+                <div class="body-card text-wrap text-break">
+                    <div>
+                    <h2>${value.name}</h2>
+                    <p>${value.description}</p>
+                    </div>
+                    
+                    <div class="img-reference">
+                        <div>
+                            <img src="${value.img}" alt="">
+                        </div>
+                        
+                        <p class=" mt-3 text-secondary fst-italic">Última actualización: <span class="text-decoration-underline">Fecha</span></p>
+
+                        <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
+
+                    </div>
+        
+                </div>
+            </div>
+        
+        
+        `;
+        });
+    }
+
+}
+
 
 const getLastUpdateProject = async (projectName) => {
     const response = await fetch(`https://api.github.com/repos/ivansanmartin/${projectName}`)
@@ -207,4 +244,18 @@ const lastUpdate = async () => {
 
 
 })()
+
+
+let projects = new Blog("blogs", [
+    {
+        name: "Docker and Kubernetes",
+        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1706821087/ivansanmartin.github.io/qlwtuazeipbfj2hyuicg.jpg",
+        description:
+            "Iniciando en docker y kubernetes, trabajando junto a Binary Decimal API",
+        technologies: ["nodejs", "express", "js", "css", "html", "bootstrap", "ejs"],
+        url: "https://github.com/ivansanmartin/sport-gym-app",
+        created_at: "05/06/2023",
+        last: false,
+    },
+]);
 
