@@ -143,7 +143,7 @@ class Blog {
                             <img src="${value.img}" alt="">
                         </div>
                         
-                        <p class=" mt-3 text-secondary fst-italic">Última actualización: <span class="text-decoration-underline">Fecha</span></p>
+                        <p class=" mt-3 text-secondary fst-italic">Fecha publicación: <span class="text-decoration-underline">Fecha</span></p>
 
                         <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
 

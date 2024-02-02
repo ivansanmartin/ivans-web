@@ -216,20 +216,27 @@ header .logo h1 {
     width: 100%;
 }
 
+
 .all-projects .projects-info {
     margin-left: 5vh;
+    padding-left: 3vh;
+    margin-bottom: 5vh;
     width: 80%;
     text-align: justify;
+    border-left: 1vh solid #b39a1e;
     
 }
 
 .blogs {
     width: 100%;
+    margin-top: 10vh;
 }
 
 .blogs .blogs-info {
     display: flex;
     flex-direction: column;
+    border-left: 1vh solid #b39a1e;
+    padding-left: 3vh;
     margin-left: 5vh;
     width: 80%;
 }
@@ -247,6 +254,7 @@ header .logo h1 {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 5vh;
 }
 
 .blogs-all
@@ -256,7 +264,7 @@ header .logo h1 {
     align-items: center;
     margin: 6px;
     width: 40%;
-    background: #48596347;
+    background: #090a0a47;
     border: 1px;
     height: auto;
     border-radius: 10px;
@@ -399,6 +407,18 @@ footer .links a:hover {
     .card  {
         width: 90%;
     }
+
+    .all-projects .projects-info {
+        margin: 1vh;
+        width: 90%;
+    }
+
+    .blogs .blogs-info {
+        margin: 1vh;
+        width: 90%;
+
+    }
+
     header .nav ul {
         align-items: center;
         flex-direction: column;
