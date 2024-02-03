@@ -1,16 +1,16 @@
 /* IMPORTS  */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap");
 
 /* VARIABLES  */
 
 :root {
-    --color-primario: #ABEBC6;
-    --color-btn: #6F7D9B;
+    --color-primario: #abebc6;
+    --color-btn: #6f7d9b;
     --color-sencundario: #9addd1;
     --color-background: #dbd4d4;
     --color-texto: #c9c9c9;
-    --text-default: 'Roboto', sans-serif;;
+    --text-default: "Roboto", sans-serif;
     --title-color: white;
     --links-color: rgba(1, 195, 140, 0.638);
 }
@@ -33,9 +33,14 @@ h1 {
 /* background: rgb(25,30,41);
 background: linear-gradient(180deg, rgba(25,30,41,1) 0%, rgba(19,45,70,1) 50%, rgba(25,30,41,1) 100%); */
 
-body { 
-    background: rgb(25,30,41);
-    background: linear-gradient(180deg, rgba(25,30,41,1) 0%, rgba(19,45,70,1) 50%, rgba(25,30,41,1) 100%);
+body {
+    background: rgb(25, 30, 41);
+    background: linear-gradient(
+        180deg,
+        rgba(25, 30, 41, 1) 0%,
+        rgba(19, 45, 70, 1) 50%,
+        rgba(25, 30, 41, 1) 100%
+    );
 }
 
 header {
@@ -44,13 +49,12 @@ header {
     align-items: center;
     height: 100px;
     width: 100%;
-    background: #191E29;
-    -webkit-box-shadow: 0px -10px 223px -26px rgba(1,195,141,0.29);
-    -moz-box-shadow: 0px -10px 223px -26px rgba(1,195,141,0.29);
-    box-shadow: 0px -10px 223px -26px rgba(1,195,141,0.29);    
+    background: #191e29;
+    -webkit-box-shadow: 0px -10px 223px -26px rgba(1, 195, 141, 0.29);
+    -moz-box-shadow: 0px -10px 223px -26px rgba(1, 195, 141, 0.29);
+    box-shadow: 0px -10px 223px -26px rgba(1, 195, 141, 0.29);
     letter-spacing: 4px;
-    z-index: 100; 
-    
+    z-index: 100;
 }
 header i {
     color: var(--color-texto);
@@ -59,11 +63,10 @@ header i {
 }
 
 header .logo h1 {
-    font-family: 'Satisfy', cursive;
+    font-family: "Satisfy", cursive;
     color: var(--color-texto);
     cursor: pointer;
 }
-
 
 .sections {
     display: flex;
@@ -80,20 +83,27 @@ header .logo h1 {
     width: 100%;
     height: auto;
     margin-bottom: 10vh;
-   
 }
 
 .principal .presentation {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 2vw;
     width: 50%;
-    margin: 40px;
     height: auto;
-
-
 }
 
+
+
+
+.principal .presentation .body .info p {
+    border-left: 8px solid #a4c376;
+    padding-left: 2vw;
+
+
+    
+}
 
 .principal .presentation .title {
     font-size: 30px;
@@ -112,7 +122,6 @@ header .logo h1 {
     text-align: center;
     width: 100%;
     height: 100%;
-
 }
 .principal .projects {
     width: 100%;
@@ -128,43 +137,38 @@ header .logo h1 {
     color: var(--color-texto);
     background: #090a0a47;
     transition: all 0.5s;
-    box-shadow: 0px -10px 223px -40px rgba(1,195,141,0.30); 
-    box-shadow: 0px -10px 223px -40px rgba(1,195,141,0.30);    
-
+    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
+    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
 }
 
 .principal .recent-project .content .projects .card:hover {
     transform: scale(1.02);
-    box-shadow: 0px -10px 223px -40px rgba(1,195,141,0.90); 
-    box-shadow: 0px -10px 223px -40px rgba(1,195,141,0.90); 
+    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.9);
+    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.9);
 }
-
 
 .recent-project .content .title {
     font-weight: 600;
     color: var(--title-color);
-
 }
-
 
 .principal .presentation .body {
     font-size: 20px;
     width: 75%;
     text-align: center;
     margin: 0;
-    font-weight: 200
+    font-weight: 200;
 }
 
 .projects {
     display: flex;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.projects
-.card  {
+.projects .card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -181,7 +185,6 @@ header .logo h1 {
 .projects .card:hover {
     transform: scale(1.02);
     background: #485963;
-
 }
 
 .projects .card img {
@@ -191,7 +194,7 @@ header .logo h1 {
     border-top-right-radius: 10px;
 }
 
-.projects .card .cuerpo-card{
+.projects .card .cuerpo-card {
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -199,7 +202,6 @@ header .logo h1 {
     flex-direction: column;
     height: 100%;
     margin: 10px;
-    
 }
 
 .projects .card .cuerpo-card .techs {
@@ -211,20 +213,17 @@ header .logo h1 {
     text-align: justify;
 }
 
-
 .sections .redes {
     width: 100%;
 }
 
-
 .all-projects .projects-info {
-    margin-left: 5vh;
-    padding-left: 3vh;
+    padding-left: 2.5vw;
+    margin-left: 4vw;
     margin-bottom: 5vh;
     width: 80%;
     text-align: justify;
-    border-left: 1vh solid #b39a1e;
-    
+    border-left: 8px solid #b39a1e;
 }
 
 .blogs {
@@ -235,15 +234,15 @@ header .logo h1 {
 .blogs .blogs-info {
     display: flex;
     flex-direction: column;
-    border-left: 1vh solid #b39a1e;
-    padding-left: 3vh;
-    margin-left: 5vh;
+    border-left: 8px solid #b39a1e;
+    padding-left: 2.5vw;
+    margin-left: 4vw;
     width: 80%;
 }
 
 .blogs {
     display: flex;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     flex-direction: column;
     align-items: start;
     flex-wrap: wrap;
@@ -257,8 +256,7 @@ header .logo h1 {
     margin-top: 5vh;
 }
 
-.blogs-all
-.card  {
+.blogs-all .card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -275,7 +273,6 @@ header .logo h1 {
 .blogs-all .card:hover {
     transform: scale(1.02);
     background: #485963;
-
 }
 
 .blogs-all .card .body-card .img-reference img {
@@ -287,7 +284,7 @@ header .logo h1 {
     border-bottom-left-radius: 10px;
 }
 
-.blogs-all .card .body-card{
+.blogs-all .card .body-card {
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -295,7 +292,6 @@ header .logo h1 {
     flex-direction: column;
     height: 100%;
     margin: 10px;
-    
 }
 
 .blogs-all .card .body-card .techs {
@@ -307,25 +303,22 @@ header .logo h1 {
     text-align: justify;
 }
 
-
 footer {
     display: flex;
     flex-direction: row;
     padding: 4vh;
-    background: #191E29;
-    -webkit-box-shadow: 0px -10px 223px -26px rgba(1,195,141,0.29);
-    -moz-box-shadow: 0px -10px 223px -26px rgba(1,195,141,0.29);
-    box-shadow: 0px -10px 223px -26px rgba(1,195,141,0.29);    
+    background: #191e29;
+    -webkit-box-shadow: 0px -10px 223px -26px rgba(1, 195, 141, 0.29);
+    -moz-box-shadow: 0px -10px 223px -26px rgba(1, 195, 141, 0.29);
+    box-shadow: 0px -10px 223px -26px rgba(1, 195, 141, 0.29);
     text-align: center;
     font-size: 100%;
     height: 100%;
     width: 100%;
     color: var(--color-texto);
-
 }
 
-footer
-.derechos {
+footer .derechos {
     display: flex;
     align-items: center;
     width: 50%;
@@ -357,18 +350,15 @@ footer .links a:hover {
     color: var(--links-color);
 }
 
-
 @media screen and (max-width: 1000px) {
     .sections .projects {
         flex-direction: column;
         align-items: center;
-        
     }
 
     .sections .projects .card {
-        width: 45%
+        width: 45%;
     }
-
 
     .sections .principal {
         align-items: center;
@@ -384,12 +374,13 @@ footer .links a:hover {
     }
 
     .principal .recent-project .content .projects .card {
-        width: 70%
+        width: 70%;
     }
 }
 
 
-@media screen and (max-width: 600px ) {
+
+@media screen and (max-width: 600px) {
     header {
         top: 0;
     }
@@ -398,13 +389,11 @@ footer .links a:hover {
         visibility: visible;
     }
 
-    .sections .projects
-    .card  {
+    .sections .projects .card {
         width: 90%;
     }
 
-    .sections .blogs
-    .card  {
+    .sections .blogs .card {
         width: 90%;
     }
 
@@ -413,10 +402,10 @@ footer .links a:hover {
         width: 90%;
     }
 
+
     .blogs .blogs-info {
         margin: 1vh;
         width: 90%;
-
     }
 
     header .nav ul {
@@ -428,8 +417,13 @@ footer .links a:hover {
         gap: 100px;
         right: 0;
         top: 0;
-        background: rgb(25,30,41);
-        background: linear-gradient(180deg, rgba(25,30,41,1) 0%, rgba(19,45,70,1) 50%, rgba(25,30,41,1) 100%);
+        background: rgb(25, 30, 41);
+        background: linear-gradient(
+            180deg,
+            rgba(25, 30, 41, 1) 0%,
+            rgba(19, 45, 70, 1) 50%,
+            rgba(25, 30, 41, 1) 100%
+        );
         transform: translateX(100%);
     }
 
@@ -441,7 +435,7 @@ footer .links a:hover {
         width: 50%;
         height: 500px;
         border-radius: 20px;
-    
+
         content: url(../images/community-cel.gif);
     }
 
@@ -461,24 +455,18 @@ footer .links a:hover {
         flex-direction: column;
         align-items: center;
     }
-    
+
     footer .derechos {
         margin-bottom: 4vh;
     }
-    
+
     footer .links {
         justify-content: center;
     }
-
-     
 }
 
 @media screen and (min-width: 500px) {
     .container {
         justify-content: center;
     }
-
-
-
-    
 }

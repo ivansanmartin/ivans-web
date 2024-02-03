@@ -246,15 +246,27 @@ const lastUpdate = async () => {
 })()
 
 
+
+// let projects = new Blog("blogs", [
+//     {
+//         name: "Docker",
+//         img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1706821087/ivansanmartin.github.io/qlwtuazeipbfj2hyuicg.jpg",
+//         description:
+//             "Iniciando en docker, trabajando junto a Binary Decimal API",
+//         url: "https://github.com/ivansanmartin/sport-gym-app",
+//         created_at: "05/06/2023",
+//         last: false,
+//     },
+// ]);
+
 let projects = new Blog("blogs", [
     {
-        name: "Docker and Kubernetes",
-        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1706821087/ivansanmartin.github.io/qlwtuazeipbfj2hyuicg.jpg",
+        name: "Aun no existen blogs",
+        img: "https://static.vecteezy.com/system/resources/thumbnails/006/363/343/small/web-development-and-coding-cross-platform-development-website-adaptive-layout-internet-page-or-web-interface-on-screen-laptop-tablet-and-phone-vector.jpg",
         description:
-            "Iniciando en docker y kubernetes, trabajando junto a Binary Decimal API",
-        technologies: ["nodejs", "express", "js", "css", "html", "bootstrap", "ejs"],
-        url: "https://github.com/ivansanmartin/sport-gym-app",
-        created_at: "05/06/2023",
+            "Escribiendo blog...",
+        url: "#",
+        created_at: "Creando...",
         last: false,
     },
 ]);
