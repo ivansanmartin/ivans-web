@@ -11,8 +11,12 @@ connectDatabase()
 
 //Routers
 const { web } = require("./routes/web")
+const { blog } = require("./routes/blog");
 const { loginAdmin } = require("./routes/admin/login");
 const { blogAdmin } = require("./routes/admin/blogs");
+
+
+
 const { MONGODB_STRING } = require("./config/environment");
 
 
@@ -53,6 +57,7 @@ app.use(
 
 
 app.use(web)
+app.use(blog)
 app.use(loginAdmin)
 app.use(blogAdmin)
 
