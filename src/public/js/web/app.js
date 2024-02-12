@@ -143,7 +143,7 @@ class Blog {
                             <img src="${value.img}" alt="">
                         </div>
                         
-                        <p class=" mt-3 text-secondary fst-italic">Fecha publicación: <span class="text-decoration-underline">Fecha</span></p>
+                        <p class=" mt-3 text-secondary fst-italic">Fecha publicación: <span class="text-decoration-underline">${value.created_at}</span></p>
 
                         <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
 
@@ -247,27 +247,17 @@ const lastUpdate = async () => {
 
 
 
-// let projects = new Blog("blogs", [
-//     {
-//         name: "Docker",
-//         img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1706821087/ivansanmartin.github.io/qlwtuazeipbfj2hyuicg.jpg",
-//         description:
-//             "Iniciando en docker, trabajando junto a Binary Decimal API",
-//         url: "https://github.com/ivansanmartin/sport-gym-app",
-//         created_at: "05/06/2023",
-//         last: false,
-//     },
-// ]);
-
 let projects = new Blog("blogs", [
     {
-        name: "Aun no existen blogs",
-        img: "https://static.vecteezy.com/system/resources/thumbnails/006/363/343/small/web-development-and-coding-cross-platform-development-website-adaptive-layout-internet-page-or-web-interface-on-screen-laptop-tablet-and-phone-vector.jpg",
+        name: "Docker - Primeros pasos",
+        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1707745237/docker-bases/gt3vaxszri5nuhv4djch.png",
         description:
-            "Escribiendo blog...",
-        url: "#",
-        created_at: "Creando...",
+            "Primeros pasos con Docker, creando contenedores, volumenes, redes y probando nuestra aplicación con Postman y MongoDB",
+        url: "/blog/firsts-steps-docker",
+        created_at: "12-02-2024",
         last: false,
     },
 ]);
+
+
 
