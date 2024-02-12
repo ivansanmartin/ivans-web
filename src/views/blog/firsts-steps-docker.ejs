@@ -1,39 +1,454 @@
-<% content = `
-    <div class="container d-flex flex-column h-auto text-white">
-        <div class="title mt-5 d-flex justify-content-center text-break text-center">
+<% stylesheets = `
+    <link rel="stylesheet"  href="/css/web/blog.css">
+` %>
 
-            <p class="fw-bold fs-1">Primeros pasos con Docker junto a Binary Decimal API</p>
-            
+<% content = `
+
+<div class="wrapper d-flex flex-column h-auto text-white">
+    <div
+        class="title mt-5 d-flex justify-content-center text-break text-center"
+    >
+        <p class="fw-bold fs-1">
+            Primeros pasos con Docker
+        </p>
+    </div>
+
+    <div class="blog mt-5 d-flex flex-column flex-grow-1 text-white text-break">
+        <div class="welcome-blog">
+            <p>
+                Dentro de este blog/guía, comparto mi progreso con Docker.
+                Utilizo este espacio para dar a conocer y poner en práctica mis
+                conocimientos en el mundo de los contenedores. A través de este
+                blog, también podrás aprender y sumergirte poco a poco en este
+                fascinante mundo junto conmigo.
+            </p>
+
+            <p>
+                En este caso pondremos en práctica estos nuevos conocimientos
+                trabajando junto a una aplicacion básica de NodeJS junto a
+                MongoDB.
+            </p>
         </div>
 
-        <div class="blog mt-5 d-flex flex-column flex-grow-1 text-white text-break">
-            <div class="welcome-blog">
-                <p>Dentro de este blog/guía, comparto mi progreso con Docker. Utilizo este espacio para dar a conocer y poner en práctica mis conocimientos en el mundo de los contenedores. A través de este blog, también podrás aprender y sumergirte poco a poco en este fascinante mundo junto conmigo.</p>
+        <div class="blog-index mt-5">
+            <p class="fs-4">Índice</p>
+            <ul>
+                <li><a href="">¿Qué es Docker?</a></li>
+            </ul>
+        </div>
 
-                <p>En este caso pondremos en práctica estos nuevos conocimientos trabajando junto a <a href="">Binary Decimal API</a>; claramente, ustedes pueden usar su propia API o aplicación web. Cabe decir que esta API REST está construida con NodeJS y Express.js y cada proceso puede variar dependiendo del stack tecnológico que estén utilizando...</p>
+        <div class="content mt-5 d-flex flex-column">
+            <div class="docker-install" id="install-docker">
+                <p class="fs-3 fw-bold">Instalación de Docker en Ubuntu</p>
+
+                <p>
+                    En este caso en particular estare usando Docker en Ubuntu,
+                    si quieres seguir este blog puedes instalarlo siguiendo los
+                    pasos entregados por Docker Link manual de instalación:
+                    <a href="https://docs.docker.com/desktop/install/ubuntu/"
+                        >https://docs.docker.com/desktop/install/ubuntu/</a
+                    >
+                </p>
             </div>
 
-            <div class="blog-index mt-5">
-                <p class="fs-4">Índice</p>
-                <ul>
-                    <li><a href="">¿Qué es Docker?</a></li>
+            <div class="overview mt-4" id="overview">
+                <p class="fs-3 fw-bold">¿Qué es lo que haremos?</p>
+
+                <p>
+                    En este blog, nos embarcaremos en un viaje práctico para
+                    crear una aplicación completa utilizando la tecnología de
+                    contenedores. Usaremos imágenes oficiales de Docker Hub para
+                    Node.js y MongoDB, configuraremos una red para la
+                    comunicación entre contenedores y desarrollaremos una
+                    aplicación web con Node.js y Express.js.
+                </p>
+
+                <p class="fs-5 ms-3 fw-bold">Objetivos</p>
+                <ul class="objectives d-flex flex-column gap-3">
+                    <li>
+                        Utilizar imágenes oficiales de Docker
+                        Hub: Aprovecharemos la confiabilidad y eficiencia de las
+                        imágenes oficiales de Node.js y MongoDB disponibles en
+                        Docker Hub.
+                    </li>
+                    <li>
+                        Crear una red para la comunicación entre
+                        contenedores: Implementaremos una red que permita a los
+                        contenedores Node.js y MongoDB comunicarse entre sí de
+                        forma segura y eficiente.
+                    </li>
+                    <li>
+                        Desarrollar una aplicación web con Node.js y
+                        Express.js: Crearemos una aplicación web funcional que
+                        interactúe con la base de datos MongoDB.
+                    </li>
+                    <li>
+                        Conectar la aplicación con la base de
+                        datos: Integraremos la aplicación Node.js con la base de
+                        datos MongoDB utilizando el paquete oficial de MongoDB
+                        para Node.js.
+                    </li>
                 </ul>
             </div>
 
-            <div class="content mt-5 d-flex flex-column">
-
+            <div class="docker mt-4" id="what-is-docker">
                 <p class="fs-3 fw-bold">¿Qué es Docker?</p>
 
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur illum beatae numquam sunt aliquam ipsa cum vitae? Commodi dolore excepturi consectetur a quas cum optio necessitatibus adipisci! Iure, laboriosam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur illum beatae numquam sunt aliquam ipsa cum vitae? Commodi dolore excepturi consectetur a quas cum optio necessitatibus adipisci! Iure, laboriosam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur illum beatae numquam sunt aliquam ipsa cum vitae? Commodi dolore excepturi consectetur a quas cum optio necessitatibus adipisci! Iure, laboriosam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur illum beatae numquam sunt aliquam ipsa cum vitae? Commodi dolore excepturi consectetur a quas cum optio necessitatibus adipisci! Iure, laboriosam!Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam consequatur illum beatae numquam sunt aliquam ipsa cum vitae? Commodi dolore excepturi consectetur a quas cum optio necessitatibus adipisci! Iure, laboriosam!</p>
-                
+                <p>
+                    “Docker es una plataforma abierta para desarrollar, enviar y
+                    ejecutar aplicaciones. Docker le permite separar sus
+                    aplicaciones de su infraestructura para que pueda entregar
+                    software rápidamente. Con Docker, puede administrar su
+                    infraestructura de la misma manera que administra sus
+                    aplicaciones. Al aprovechar las metodologías de Docker para
+                    enviar, probar e implementar código, puede reducir
+                    significativamente el retraso entre escribir el código y
+                    ejecutarlo en producción. (Docker, 2024): 
+                    <a href="https://docs.docker.com/get-started/overview/"
+                        >https://docs.docker.com/get-started/overview/</a
+                    >
+                </p>
             </div>
-        </div>        
 
-        <div class="date text-white mb-5">
+            <div class="concepts mt-4">
+                <p class="fs-3 fw-bold">Conceptos</p>
 
-            <p class="text-end text-secondary fst-italic fw-semibold">Blog realizado por Iván San Martín el dd-mm-yy </p>
-            
+                <div class="containers mt-5" id="containers">
+                    <p class="fs-5 fw-bold">Contenedores</p>
+                    <div
+                        class="border border-primary border-top-0 border-end-0 border-bottom-0"
+                    >
+                        <p class="ms-3">
+                            Un contenedor es una instancia ejecutable de una
+                            imagen; es un paquete que incluye todo lo necesario
+                            para ejecutar una aplicación. Es una caja que
+                            encapsula todo lo que una aplicación necesita para
+                            ejecutarse de forma independiente en cualquier
+                            entorno. (Puedes encontrar la definición
+                            directamente de Docker Docs:
+                            <a
+                                href="https://docs.docker.com/get-started/overview/#containers"
+                                >https://docs.docker.com/get-started/overview/#containers</a
+                            >)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="networks mt-5" id="containers">
+                    <p class="fs-5 fw-bold">Redes</p>
+                    <div
+                        class="border border-primary border-top-0 border-end-0 border-bottom-0"
+                    >
+                        <p class="ms-3">
+                            Las redes de contenedores se refieren a la capacidad
+                            de los contenedores para conectarse y comunicarse
+                            entre sí o con cargas de trabajo que no son de
+                            Docker.
+                        </p>
+
+                        <p class="ms-3">
+                            La red que crearemos será para comunicar dos
+                            contenedores entre sí, esto signfica que el
+                            contenedor de Node y Mongo podran hablar entre sí,
+                            teniendo asi la posibilidad de que Node se conecte
+                            al contenedor que alberga la base de datos de
+                            Mongo.  (Puedes encontrar toda la información sobre
+                            redes en Docker Docs:
+                            <a href="https://docs.docker.com/network/"
+                                >https://docs.docker.com/network/</a
+                            >).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="volumes mt-5" id="containers">
+                    <p class="fs-5 fw-bold">Volumenes</p>
+                    <div
+                        class="border border-primary border-top-0 border-end-0 border-bottom-0"
+                    >
+                        <p class="ms-3">
+                            Los volúmenes en Docker son un directorio
+                            persistente que se monta en un contenedor, gracias a
+                            esto podemos tener datos persistentes para que
+                            sobrevivan a la hora de eliminar un contenedor.
+                            (Puedes encontrar toda la información referente a
+                            volúmenes en Docker Docs:
+                            <a href="https://docs.docker.com/storage/"
+                                >https://docs.docker.com/storage/</a
+                            >).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="first-steps mt-5" id="first-steps">
+                <p class="fs-3 fw-bold">Primeros pasos</p>
+
+                <div class="create-network ms-3" id="create-network">
+                    <p class="fs-5 fw-bold ms-3">
+                        Creando nuestra primera red para la comunicación entre
+                        contenedores.
+                    </p>
+
+                    <div class="ms-4">
+                        <p>
+                            Crearemos una red llamada “node-mongo” la cual nos
+                            ayudara para la comunicación entre los dos
+                            contenedores que crearemos más adelante.
+                        </p>
+
+                        <p>Ejecutar en terminal:</p>
+
+                        <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+   > docker network create node-mongo   
+                            </code></pre>
+                        </div>
+
+                        <p>
+                            Podemos listar nuestras redes y ver si se creo
+                            correctamente:
+                        </p>
+
+                        <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+   > docker network ls      
+                            </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="node-mongo-containers mt-5">
+                <p class="fs-3 fw-bold">
+                    Creando nuestros contenedores de Node y Mongo
+                </p>
+
+                <div class="content">
+                    <p>
+                        En este punto procedemos a crear los contenedores: uno
+                        será Node que albergará nuestra aplicación creada con
+                        Node y Express; el otro será para nuestro servidor de
+                        MongoDB al cual podremos conectarnos y crear nuestras
+                        bases de datos, colecciones y documentos.
+                    </p>
+
+                    <div class="guide">
+
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5">
+                            <p class="fs-4 fw-bold ms-3">Propiedades</p>
+                        </div>
+
+                        <div class="list-properties">
+                            <ul class="d-flex flex-column gap-3">
+                                <li>docker container run → Para crear un contenedor</li>    
+                                <li>—name <name> → Nombre del contenedor</li>
+                                <li>-p <puerto_externo>:<puerto_interno>→ p = Ports, el puerto del lado izquierdo corresponde al host y del lado derecho corresponde el puerto del contenedor.</li>
+                                <li>—env → Variables de entorno que podemos modificar, cada imagen puede tener sus propias variables de entorno.</li>
+                                <li>-w /<directory>→ Es el directorio de trabajo</li>
+                                <li>-v “$(pwd)”:/<directory>→ Esto es para vincular el directorio host con el directorio del contenedor</li>
+                                <li>—network <network-name>→ Asignar red al contenedor, en este caso asigamos la que creamos anteriormente</li>
+                                <li>node:20-alpine3.19 → La imagen que usaremos, podemos ver todas las imagenes y versions de Node en: https://hub.docker.com/_/node</li>
+                                <li>sh -c "npm install && npm run dev" → Ejecutamos un comando de shell para instalar los package necesarios de nuestra aplicación y luego correrla.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5">
+                            <p class="fs-4 fw-bold ms-3">Creando contenedor de Mongo.</p>
+                        </div>
+
+                        <div class="mongo-install">
+                            <p class="">En nuestra terminal de Ubuntu ejecutamos el siguiente comando de docker:</p>
+
+                                
+                            <ul class="env-info d-flex flex-column gap-3">
+                                <li>--env MONGO_INITDB_ROOT_USERNAME=mongo-admin → Asignamos el usuario de nuestro servidor de mongodb</li>
+                                <li>--env MONGO_INITDB_ROOT_PASSWORD=mongo-admin → Asignamos la contraseña de nuestro servidor de mongodb</li>
+                            </ul>
+
+                            <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+> docker container run \\
+    --name mongodb \\
+    -dp 27018:27017 \\
+    --env MONGO_INITDB_ROOT_USERNAME=mongo-admin \\
+    --env MONGO_INITDB_ROOT_PASSWORD=mongo-admin \\
+    --network node-mongo \\
+    mongo:7.0.5-jammy 
+                            </code></pre>
+                            </div>
+
+
+                            <p>El comando creará un contenedor con la imagen de Mongo con el tag 7.0.5-jammy. Lo que hará Docker será buscar localmente para verificar si existe la imagen. Si esta no existiría, la descargará de Docker Hub, es lo que se ve en la respuesta.</p>
+
+                            <p>Ya podemos ver nuestro contenedor corriendo</p>
+
+                            <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+> docker container ls
+                            </code></pre>
+                            </div>
+
+                        
+                        </div>
+
+
+                        <div class="node-install">
+                            <div class="border border-primary border-top-0 border-end-0 border-bottom-0">
+                            <p class="fs-4 fw-bold ms-3">Creando contenedor de Node.</p>
+                        </div>
+
+                            <div class="d-flex flex-column align-items-center w-100 mb-5 mt-5">
+                                <p class="alerts-info alert alert-danger">IMPORTANTE: antes de ejecutar el siguiente comando, necesitamos estar en la raíz de nuestro proyecto de Node.js, pueden obtenerlo desde mi repositorio de Github: <a href="https://github.com/ivansanmartin/docker-mongodb-nodejs">https://github.com/ivansanmartin/docker-mongodb-nodejs</a></p>
+
+                                <p class="alerts-info alert alert-primary">Derigirse a sus workspaces y clonar el repositorio en su directorio de proyectos o el que estimas conveniente.</p>
+
+                            </div>
+                            <p>Yo me encuentro en mi directorio de proyectos y dentro de la raíz del proyecto de Github que les compartí.</p>
+
+                            <p>Ejecutamos: </p>
+
+                            
+                            <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+> docker container run \\
+    --name nodejs \\
+    -w /app \\
+    -p 3000:3000 \\
+    -v "$(pwd)":/app \\
+    --network node-mongo \\
+    node:20-alpine3.19 \\
+    sh -c "npm install && npm run dev"
+                            </code></pre>
+                            </div>
+
+                            <p>Como respuesta podemos apreciar que docker no pudo encontrar la imagen de Node localmente por lo cual procede a descargarla directamente desde Docker Hub.</p>
+
+                            <div class="d-flex flex-column align-items-center w-100 mt-5 mb-5">
+                                <p class="alerts-info alert alert-warning">Si obtuviste algún error, verifica que hayas hecho correctamente los pasos anteriores.</p>
+                            </div>
+
+                            <p>Si todo salió bien, podrán apreciar que la aplicación ya está corriendo y se ha conectado correctamente a MongoDB ya que se están comunicando correctamente con el contenedor..</p>
+                        </div>
+
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5">
+                            <p class="fs-4 fw-bold ms-3">Explicando código de Node.js</p>
+                        </div>
+
+                        <p class="fs-4 fw-bold mt-5">¿Cómo podemos ver la IP del contenedor de Mongo para hacer una conexión exitosa?</p>
+
+                        <p>Necesitamos obtener las credenciales para crear nuestra URI de conexión hacia el contenedor de MongoDB.</p>
+
+                        <p>La URI se compone de 4 propiedades las cuales puedes ver en la imagen:</p>
+
+                        <div class="uri-mongodb d-flex justify-content-center mb-5 w-100">
+                            <img src="https://www.mongodb.com/docs/drivers/node/current/includes/figures/dns_seedlist_connection_string_parts.png" width="50%"/>
+                        </div>
+
+                        <p>Si se fijan en el código, estamos creando una instancia de MongoClient, una clase de MongoDB que nos permite crear un nuevo cliente. Como primer parámetro, estamos pasando nuestra URI con los datos necesarios. El user y el pass son los que indicamos al contenedor a la hora de crearlo y para obtener hostname/IP debemos ejecutar el siguiente comando de docker desde nuestra terminal:</p>
+
+                        <div class="d-flex flex-column align-items-center w-100 mt-5 mb-5">
+                            <p class="alerts-info alert alert-warning">NOTA: Recuerden que “node-mongo” es el nombre que le dimos a nuestra red que nos permite comunicar a nuestros dos contenedores.</p>
+                        </div>
+
+                        <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+> docker network inspect node-mongo
+                            </code></pre>
+                        </div>
+
+                        <p>Respuesta: </p>
+
+                        <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+{
+          "Name": "node-mongo",
+          "Id": "025ddaff4fa476a23ec1d0e418cf111d48190f270786ab36073a9a72bdc4c277",
+          "Created": "2024-02-11T15:18:59.449671507-03:00",
+          "Scope": "local",
+          "Driver": "bridge",
+          "EnableIPv6": false,
+          "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+              {
+                "Subnet": "172.18.0.0/16",
+                "Gateway": "172.18.0.1"
+              }
+            ]
+          },
+          "Internal": false,
+          "Attachable": false,
+          "Ingress": false,
+          "ConfigFrom": {},
+          "Network": {},
+          "ConfigOnly": false,
+          "Containers": {
+            "6095de10843ef9473f63598d375f5a092d1b511e7ee05ea12f4d0f0bc1ba0ea7": {
+              "Name": "nodejs",
+              "EndpointID": "579ad2fb83cb085281e95f7671936ec004ebc03e669307861c1101ee3769d747",
+              "MacAddress": "02:42:ac:12:00:03",
+              "IPv4Address": "172.18.0.3/16",
+              "IPv6Address": ""
+            },
+            "613de705a990028ff11207173a1b47af2f737fa3827f8db44cafa4377e99bc5b": {
+              "Name": "mongodb",
+              "EndpointID": "4746f1c236f07eeeac2c27ebff955fa01a618c27ffbcb0f74bb52b48e224086b",
+              "MacAddress": "02:42:ac:12:00:02",
+              "IPv4Address": "172.18.0.2/16",
+              "IPv6Address": ""
+            }
+          },
+          "Options": {}
+}
+                            </code></pre>
+                        </div>
+
+                        <p>Pueden ver que lo que está marcado de blanco es la IP que estamos utilizando en nuestro código de Node para crear una conexión y es la que necesitamos para poder crearla... De igual forma podríamos utilizar el “name” que nos entrega, que en este caso es “mongodb”. Se puede decir que funciona como un DNS, lo cual es una forma de identificar el contenedor. Dicho esto, igual podemos hacer una conexión mediante el nombre del contenedor.</p>
+
+
+                        <p>
+                            URI:
+
+                            mongodb://mongo-admin:mongo-admin@mongodb:27017/
+                        </p>
+
+                                                <div class="pretty-code">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+
+                            </code></pre>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="date text-white mt-5 mb-5">
+        <p class="text-end text-secondary fst-italic fw-semibold">
+            Blog realizado por Iván San Martín el dd-mm-yy
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
 ` %> <%- include("../partials/base.ejs") %>

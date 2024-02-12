@@ -1,0 +1,34 @@
+
+.wrapper {
+    width: 100%;
+    padding: 6vw;
+    justify-content: center;
+    
+}
+
+.content .guide .node-install .alerts-info {
+    width: 50vw;
+
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 0;
+    }
+
+    .blog .content .concepts .containers {
+        margin-left: 0;
+
+    }
+
+    .content .guide .node-install .alerts-info {
+        width: 100%;
+    
+    }
+
+    .content .guide .uri-mongodb img {
+        width: 100%;
+
+    }
+
+}
