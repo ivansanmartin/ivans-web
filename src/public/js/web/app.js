@@ -250,7 +250,7 @@ const lastUpdate = async () => {
 let projects = new Blog("blogs", [
     {
         name: "Docker - Primeros pasos",
-        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1707745237/docker-bases/gt3vaxszri5nuhv4djch.png",
+        img: "https://res.cloudinary.com/dxupqwg5l/image/upload/v1707745860/ivansanmartin.github.io/pmyhm4fxmxeurfylthxr.png",
         description:
             "Primeros pasos con Docker, creando contenedores, volumenes, redes y probando nuestra aplicación con Postman y MongoDB",
         url: "/blog/firsts-steps-docker",
