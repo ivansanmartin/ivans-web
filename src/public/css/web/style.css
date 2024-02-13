@@ -85,6 +85,10 @@ header .logo h1 {
     margin-bottom: 10vh;
 }
 
+p {
+    font-size: 20px;
+}
+
 .principal .presentation {
     display: flex;
     flex-direction: column;
@@ -99,13 +103,15 @@ header .logo h1 {
 
 .principal .presentation .body .info p {
     border-left: 8px solid #a4c376;
-    padding-left: 2vw;
-
-
+    padding-left: 1vw;
     
 }
 
 .principal .presentation .title {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    margin-left: 3vw;
     font-size: 30px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -219,13 +225,38 @@ header .logo h1 {
 }
 
 .all-projects .projects-info {
-    padding-left: 2.5vw;
+    padding-left: 1vw;
     margin-left: 4vw;
     margin-bottom: 5vh;
     width: 80%;
     text-align: justify;
     border-left: 8px solid #b39a1e;
 }
+
+
+.all-projects .projects-info h1 {
+    margin-bottom: 30px;
+    transition: all 1s;
+
+}
+
+.all-projects .projects-info p {
+    transition: all 1s;
+
+}
+
+.all-projects .projects-info h1:hover {
+    margin-left: 1vw;
+    cursor: pointer;
+
+}
+
+.all-projects .projects-info p:hover {
+    cursor: pointer;
+    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
+
+}
+
 
 .blogs {
     width: 100%;
@@ -236,9 +267,33 @@ header .logo h1 {
     display: flex;
     flex-direction: column;
     border-left: 8px solid #b39a1e;
-    padding-left: 2.5vw;
+    padding-left: 1vw;
     margin-left: 4vw;
     width: 80%;
+}
+
+.blogs .blogs-info h1 {
+    margin: 0;
+    margin-bottom: 30px;
+    transition: all 1s;
+}
+
+.blogs .blogs-info p {
+    margin: 0;
+    transition: all 1s;
+}
+
+.blogs .blogs-info h1:hover {
+    margin-left: 1vw;
+    cursor: pointer;
+
+}
+
+.blogs .blogs-info p:hover {
+    cursor: pointer;
+    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
+    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
+
 }
 
 .blogs {
@@ -392,6 +447,14 @@ footer .links a:hover {
         visibility: visible;
     }
 
+    .principal .recent-project .content .projects .card {
+        width: 100%;
+        height: 70%;
+        margin: 0;
+        padding: 0;
+    
+    }
+
     .sections .projects .card {
         width: 90%;
     }
@@ -409,6 +472,20 @@ footer .links a:hover {
     .blogs .blogs-info {
         margin: 1vh;
         width: 90%;
+    }
+
+    .all-projects .projects-info {
+        padding-left: 2.5vw;
+
+    }
+    .blogs .blogs-info {
+        padding-left: 2.5vw;
+
+    }
+
+    .principal .presentation .body .info p {
+        padding-left: 2.5vw;
+        
     }
 
     header .nav ul {
