@@ -104,7 +104,13 @@ p {
 .principal .presentation .body .info p {
     border-left: 8px solid #a4c376;
     padding-left: 1vw;
+    transition: all 1s;
     
+}
+
+.principal .presentation .body .info p:hover {
+    transform: scale(0.990);
+    cursor: pointer;
 }
 
 .principal .presentation .title {
@@ -248,12 +254,14 @@ p {
 .all-projects .projects-info h1:hover {
     margin-left: 1vw;
     cursor: pointer;
+        transform: scale(0.990);
 
 }
 
 .all-projects .projects-info p:hover {
     cursor: pointer;
-    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
+    transform: scale(0.990);
+
 
 }
 
@@ -291,8 +299,7 @@ p {
 
 .blogs .blogs-info p:hover {
     cursor: pointer;
-    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
-    box-shadow: 0px -10px 223px -40px rgba(1, 195, 141, 0.3);
+    transform: scale(0.990);
 
 }
 
