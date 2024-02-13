@@ -86,7 +86,7 @@ class Project {
         
                 <div class="cuerpo-card text-wrap text-break">
                     <div>
-                    <h2>${value.name}</h2>
+                    <h2 class="fw-semibold">${value.name}</h2>
                     <p>${value.description}</p>
                     </div>
                     
@@ -98,7 +98,9 @@ class Project {
                         
                         <p class=" mt-3 text-secondary fst-italic">Última actualización: <span class="text-decoration-underline">${value.updatedAt}</span></p>
 
-                        <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
+                        <a class="btn btn-info w-50 mt-3" href="${value.url}" target="_blank">
+                            Ver
+                        </a>
 
                     </div>
         
@@ -134,7 +136,7 @@ class Blog {
             <div class="card card-1">        
                 <div class="body-card text-wrap text-break">
                     <div>
-                    <h2>${value.name}</h2>
+                    <h2 class="fw-semibold mb-4">${value.name}</h2>
                     <p>${value.description}</p>
                     </div>
                     
@@ -145,7 +147,7 @@ class Blog {
                         
                         <p class=" mt-3 text-secondary fst-italic">Fecha publicación: <span class="text-decoration-underline">${value.created_at}</span></p>
 
-                        <button type="button" class="btn btn-info w-50 mt-3" onclick="window.open('${value.url}', '_blank')">Ver</button>
+                        <a href="${value.url}" class="btn btn-info w-50 mt-3">Ver</a>
 
                     </div>
         
