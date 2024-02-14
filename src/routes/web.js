@@ -7,7 +7,7 @@ console.log()
 
 router.get("/files/:filename", (req, res) => {
     const filename = req.params.filename
-    const path = `./src/files/${filename}`
+    const path = `/src/files/${filename}`
     if (fs.existsSync(path)) {
         res.contentType("application/pdf");
         fs.createReadStream(path).pipe(res)
