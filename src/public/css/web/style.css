@@ -111,6 +111,8 @@ p {
 .principal .presentation .body .info p:hover {
     transform: scale(0.990);
     cursor: pointer;
+
+
 }
 
 .principal .presentation .title {

@@ -1,8 +1,22 @@
 const express = require("express")
-const path = require("path")
+const fs = require('fs')
 
 const router = express.Router()
 
+console.log()
+
+router.get("/files/:filename", (req, res) => {
+    const filename = req.params.filename
+    const path = `./src/files/${filename}`
+    if (fs.existsSync(path)) {
+        res.contentType("application/pdf");
+        fs.createReadStream(path).pipe(res)
+    } else {
+        res.status(500)
+        res.send('File not found')
+    }
+
+})
 
 
 router.get("/projects/ivsm-panel", (req, res) => {
