@@ -260,6 +260,3 @@ let projects = new Blog("blogs", [
         last: false,
     },
 ]);
-
-
-
