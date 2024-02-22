@@ -1,0 +1,141 @@
+<% stylesheets = `
+    <link rel="stylesheet"  href="/css/web/blog.css">
+` %>
+
+<% content = `
+
+<div class="wrapper d-flex flex-column h-auto text-white">
+    <div
+        class="title d-flex justify-content-center text-break text-center"
+    >
+        <p class="fw-bold fs-1 text-success">
+            Docker Compose & Dockerfile
+        </p>
+    </div>
+
+    <div class="blog mt-5 d-flex flex-column flex-grow-1 text-white text-break">
+        <div class="welcome-blog">
+            <p>
+                Dentro de este blog/guía, comparto mi progreso con Docker.
+                Utilizo este espacio para dar a conocer y poner en práctica mis
+                conocimientos en el mundo de los contenedores. A través de este
+                blog, también podrás aprender y sumergirte poco a poco en este
+                fascinante mundo junto conmigo.
+            </p>
+        </div>
+
+        <div class="blog-index mt-5">
+            <p class="fs-4">Tabla de contenido</p>
+            <ol class="d-flex flex-column gap-2">
+                <li><a href="#concepts">Conceptos</a>
+                    <ol class="d-flex flex-column gap-2">
+                        <li><a href="#docker-hub">Docker Hub</a></li>
+                        <li><a href="#docker-compose">Docker Compose</a></li>
+                        <li><a href="#dockerfile">Dockerfile</a></li>
+                    </ol>
+                </li>
+                <li><a href="#docker-compose-yaml">Creando YAML de Docker Compose</a></li>
+            </ol>
+        </div>
+
+        <div class="content mt-5 d-flex flex-column">
+
+            <div class="overview mt-4" id="overview">
+                <p class="fs-3 fw-bold">¿Qué es lo que haremos?</p>
+
+                <p>
+                    En este blog, vamos a explorar Docker Compose y aprenderemos cómo utilizarlo para gestionar nuestras aplicaciones multi-contenedor. También nos adentraremos en el proceso de creación de nuestras propias imágenes personalizadas para Docker y las subiremos a Docker Hub. Docker Compose nos permite definir la configuración de los servicios que componen nuestra aplicación en un archivo YAML, y luego se encarga de crear y gestionar los contenedores basados en esta configuración.
+                </p>
+
+                <p class="fs-5 ms-3 fw-bold">Objetivos</p>
+                <ul class="objectives d-flex flex-column gap-3">
+                    <li>
+                        Explorar Docker Compose.
+                    </li>
+                    <li>
+                        Gestoniar aplicaciones multi-contenedor con Docker Compose.
+                    </li>
+                    <li>
+                       Creación de imágenes personalizadas para Docker.
+                    </li>
+                    <li>
+                        Subir imágenes a Docker Hub.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="concepts mt-4" id="concepts">
+                <p class="fs-3 fw-bold">Conceptos</p>
+
+                <div class="docker-hub mt-5" id="docker-hub">
+                    <p class="fs-5 fw-bold">Docker Hub</p>
+                    <div
+                        class="border border-primary border-top-0 border-end-0 border-bottom-0"
+                    >
+                        <p class="ms-3">
+                            En Docker Hub encontraremos un registro extenso de imágenes para crear nuestros contenedores, además podremos publicar nuestras propias imágenes en repositorios públicos o privados.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="Docker Compose mt-5" id="docker-compose">
+                    <p class="fs-5 fw-bold">Docker Compose</p>
+                    <div
+                        class="border border-primary border-top-0 border-end-0 border-bottom-0"
+                    >
+                        <p class="ms-3">
+                            Docker Compose es una herramienta que nos permite definir y crear aplicaciones multi-contenedor. Con esta herramienta, podemos simplificar la administración de nuestro stack de aplicaciones al definir la configuración de servicios y crear redes y volúmenes de manera sencilla en un archivo YAML/YML. Además, Docker Compose facilita la gestión de contenedores, permitiéndonos iniciar, detener y administrar nuestra aplicación de manera eficiente.
+                            (Más información en Docker Docs <a
+                                href="https://docs.docker.com/compose" target="_blank"
+                                >https://docs.docker.com/compose/</a
+                            >)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="Dockerfile mt-5" id="dockerfile">
+                    <p class="fs-5 fw-bold">Dockerfile</p>
+                    <div
+                        class="border border-primary border-top-0 border-end-0 border-bottom-0"
+                    >
+                        <p class="ms-3">
+                            Un archivo Dockerfile nos ayuda a construir imágenes dependiendo de las instrucciones que indiquemos dentro de él. Este archivo contiene una serie de comandos en orden que necesitamos para crear esa imagen.
+
+                            (Más información en Docker Docs
+                        <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/ target="_blank"
+                            >https://docs.docker.com/develop/develop-images/dockerfile_best-practices/</a
+                        >).
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="docker-compose-yaml mt-5" id="docker-compose-yaml">
+                <p class="fs-3 fw-bold">
+                    Creación de un archivo Docker Compose YAML para MongoDB y Mongo Express
+                </p>
+
+                <div class="content">
+                    En este paso estaremos aprendiendo un poco sobre Docker Compose y lo que haremos será crear un archivo YAML que nos permita desplegar contenedores para MongoDB y Mongo Express (Panel de administración de base de datos para MongoDB).
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="date text-white mt-5 mb-5">
+        <p class="text-end text-secondary fst-italic fw-semibold">
+            Blog realizado por Iván San Martín el 22-02-2024
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+` %> <%- include("../partials/base.ejs") %>

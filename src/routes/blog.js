@@ -8,6 +8,9 @@ router.get("/blog/:name", (req, res) => {
         case "firsts-steps-docker":
             res.render("blog/firsts-steps-docker.ejs")
             break;
+        case "docker-compose-and-dockerfile":
+            res.render("blog/docker-compose-and-dockerfile.ejs")
+            break;
         default:
             res.send("Blog doesn't exist")
             break;

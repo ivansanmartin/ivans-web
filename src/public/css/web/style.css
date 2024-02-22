@@ -310,15 +310,23 @@ p {
     margin-bottom: 20px;
     flex-direction: column;
     align-items: start;
-    flex-wrap: wrap;
     width: 100%;
 }
 
+
 .blogs-all {
     display: flex;
-    justify-content: center;
     width: 100%;
+    overflow-x: auto;
     margin-top: 5vh;
+}
+
+.blogs-all .blog-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
 }
 
 .blogs-all .card {
@@ -326,7 +334,7 @@ p {
     flex-direction: column;
     align-items: center;
     margin: 6px;
-    width: 40%;
+    width: 30%;
     background: #090a0a47;
     border: 1px;
     height: auto;
@@ -343,7 +351,7 @@ p {
 
 .blogs-all .card .body-card .img-reference img {
     width: 100%;
-    height: 150px;
+    height: 160px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -436,6 +444,11 @@ footer .links a:hover {
         width: 100%;
     }
 
+    .sections .blogs .card {
+        width: 600px;
+
+    }
+
     .sections .principal .recent-project {
         width: 100%;
     }
@@ -469,16 +482,11 @@ footer .links a:hover {
     }
 
     .sections .blogs .card {
-        width: 90%;
+        width: 400px;
+
     }
 
     .all-projects .projects-info {
-        margin: 1vh;
-        width: 90%;
-    }
-
-
-    .blogs .blogs-info {
         margin: 1vh;
         width: 90%;
     }
@@ -490,6 +498,36 @@ footer .links a:hover {
     .blogs .blogs-info {
         padding-left: 2.5vw;
 
+    }
+
+    .blogs-all {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 5vh;
+    }
+    
+    .blogs-all .blog-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: normal;
+
+        width: auto;
+    }
+    
+    .blogs-all .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 6px;
+        width: 30%;
+        background: #090a0a47;
+        border: 1px;
+        height: auto;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.5s;
     }
 
     .principal .presentation .body .info p {
@@ -521,7 +559,7 @@ footer .links a:hover {
     }
 
     .blogs-all .card .body-card .img-reference img {
-        height: 80px;
+        height: 115px;
 
     }
     .community-info img {
