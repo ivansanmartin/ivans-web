@@ -35,6 +35,7 @@
                     </ol>
                 </li>
                 <li><a href="#docker-compose-yaml">Creando YAML de Docker Compose</a></li>
+                <li><a href="#dockerfile-images">Creando imágenes | Dockerfile</a></li>
             </ol>
         </div>
 
@@ -116,11 +117,379 @@
 
             <div class="docker-compose-yaml mt-5" id="docker-compose-yaml">
                 <p class="fs-3 fw-bold">
-                    Creación de un archivo Docker Compose YAML para MongoDB y Mongo Express
+                    Creación de un archivo Docker Compose YAML para flash-cache-server, flash-cache-client y Redis
                 </p>
 
                 <div class="content">
-                    En este paso estaremos aprendiendo un poco sobre Docker Compose y lo que haremos será crear un archivo YAML que nos permita desplegar contenedores para MongoDB y Mongo Express (Panel de administración de base de datos para MongoDB).
+                    <p>En este paso estaremos aprendiendo un poco sobre Docker Compose y lo que haremos será crear un archivo YAML que nos permita desplegar contenedores para flash-cache-server y flash-cache-client (Visor de flash-cache-server).</p>
+
+                    <p>Lo primero que haremos será crear el directorio que albergará el archivo docker-compose.yaml. En mi caso lo cree en mi workspace dentro de mi directorio de Blogs llamándolo <mark>"flash-cache"</mark>.</p>
+
+                    <p class="text-primary">/Ivan Workspace/Blogs/flash-cache$</p>
+
+                    <img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708696713/docker-compose/iilxeog6upra2qrr3rrm.png" width="100%"/>
+
+                    <p class="mt-5">Podemos editar el archivo docker-compose.yaml utilizando Visual Studio Code (puedes usar el editor que más gustes)</p>
+
+
+                    <img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708697088/docker-compose/ovewg4lfzjx4v4tx9eom.png", width="100%"/>
+                    
+                    <p class="mt-5">Procedemos a modificar nuestro archivo docker-compose.yaml de la siguiente manera: </p>
+
+                    <div class="pretty-code mt-5">
+                        <pre
+                            class="prettyprint w-50"
+                        ><code class="language-java">
+    version: '3'
+
+    services:
+      redis:
+        container_name: redis
+        image: redis:bookworm
+        ports:
+          - "6379:6379"
+    
+      server:
+        container_name: flash-cache-server
+        depends_on:
+          - redis
+        image: ivansanmartins/flash-cache-server:teddy
+        ports:
+          - "3000:3000"
+        environment:
+          REDIS_HOST: redis
+          REDIS_PORT: 6379
+        restart: always
+      
+      client:
+        container_name: flash-cache-client
+        image: ivansanmartins/flash-cache-client:teddy
+        ports:
+          - "8000:8000"
+        restart: always
+                        </code></pre>
+                    </div>
+
+                    <p class="mt-5 mb-5">Referencia:</p>
+
+                    <img src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708697439/docker-compose/dsepplzorfr7phili56a.png" width="100%"/>
+
+                    <div class="alert alert-primary mt-5 fw-bold" role="alert">
+                      Se podrán dar cuenta de que estamos usando imágenes provenientes de Docker Hub, en este caso, Redis, flash-cache-server y flash-cache-client. Aquí les dejo la documentación y links hacia esas imágenes:
+
+                      <div class="links d-flex flex-column gap-2 mt-3">
+                        Redis:
+                        <a href="https://hub.docker.com/_/redis" target="_blank" rel="noopener noreferrer">https://hub.docker.com/_/redis</a>
+                        flash-cache-server:
+                        <a href="https://hub.docker.com/r/ivansanmartins/flash-cache-server" target="_blank" rel="noopener noreferrer">https://hub.docker.com/r/ivansanmartins/flash-cache-server</a>
+                        flash-cache-client:
+                        <a href="https://hub.docker.com/r/ivansanmartins/flash-cache-client" target="_blank" rel="noopener noreferrer">https://hub.docker.com/r/ivansanmartins/flash-cache-client</a>
+
+                      </div>
+                      
+
+                    </div>
+                      
+                    <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5" id="testing-mongodb-compass">
+                        <p class="fs-4 fw-bold ms-3">Explicando propiedades de docker-compose.yaml</p>
+                    </div>
+
+                    <div class="accordion accordion-flush mt-5" id="accordion">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button bg-dark-subtle text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                <code>version</code>
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                            <div class="accordion-body bg-dark text-white">
+                                Especificar la versión de la sintaxis de Docker Compose | <a href="https://docs.docker.com/compose/compose-file/04-version-and-name/#version-top-level-element-optional">https://docs.docker.com/compose/compose-file/04-version-and-name/#version-top-level-element-optional</a>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark-subtle text-white fw-bold"" type="button" data-bs-toggle="collapse" data-bs-target="#panel-collapse-2" aria-expanded="false" aria-controls="panel-collapse-2">
+                              <code>services</code>
+                            </button>
+                          </h2>
+                          <div id="panel-collapse-2" class="accordion-collapse collapse">
+                            <div class="accordion-body bg-dark text-white">
+                                Definir y agrupar los distintos servicios que se ejecutaran en contenedores de Docker | En este caso tenemos el servicio de <strong>redis</strong>, <strong>server</strong> y <strong>client</strong>.
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed bg-dark-subtle text-white fw-bold"" type="button" data-bs-toggle="collapse" data-bs-target="#panel-collapse-3" aria-expanded="false" aria-controls="panel-collapse-3">
+                                <code>container_name</code>
+                            </button>
+                          </h2>
+                          <div id="panel-collapse-3" class="accordion-collapse collapse">
+                            <div class="accordion-body bg-dark text-white">
+                              Definir nombre del contenedor | <strong>redis</strong>, <strong>flash-cache-server</strong>, <strong>flash-cache-client</strong>.
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed bg-dark-subtle text-white fw-bold"" type="button" data-bs-toggle="collapse" data-bs-target="#panel-collapse-4" aria-expanded="false" aria-controls="panel-collapse-4">
+                                  <code>image</code>
+                              </button>
+                            </h2>
+                            <div id="panel-collapse-4" class="accordion-collapse collapse">
+                              <div class="accordion-body bg-dark text-white">
+                                Especificar la imágen de Docker que se utilizará para crear el contenedor, estas imágenes las encontramos en Docker Hub.
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed bg-dark-subtle text-white fw-bold"" type="button" data-bs-toggle="collapse" data-bs-target="#panel-collapse-5" aria-expanded="false" aria-controls="panel-collapse-5">
+                                  <code>ports</code>
+                              </button>
+                            </h2>
+                            <div id="panel-collapse-5" class="accordion-collapse collapse">
+                              <div class="accordion-body bg-dark text-white">
+                                Propiedad para definir el puerto del contenedor y host | <strong>containerPort</strong>:<strong>hostPort</strong>, asignando el puerto del host podremos acceder al contenedor desde fuera.
+                              </div>
+                            </div>
+                        </div>
+
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed bg-dark-subtle text-white fw-bold"" type="button" data-bs-toggle="collapse" data-bs-target="#panel-collapse-6" aria-expanded="false" aria-controls="panel-collapse-6">
+                                  <code>depends_on</code>
+                              </button>
+                            </h2>
+                            <div id="panel-collapse-6" class="accordion-collapse collapse">
+                              <div class="accordion-body bg-dark text-white">
+                                Con esta propiedad le decimos al contenedor que depende de otro, en nuestro caso el único <strong>depends_on</strong> que tenemos es en el servicio <strong>server</strong> el cual depende de redis, esto hará que el servicio de <strong>redis</strong> se inicie primero que el servicio <strong>server</strong>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed bg-dark-subtle text-white fw-bold"" type="button" data-bs-toggle="collapse" data-bs-target="#panel-collapse-7" aria-expanded="false" aria-controls="panel-collapse-7">
+                                  <code>environment</code>
+                              </button>
+                            </h2>
+                            <div id="panel-collapse-7" class="accordion-collapse collapse">
+                              <div class="accordion-body bg-dark text-white">
+                                Definir variables de entorno que son utilizadas por los contenedores, en este caso, el servicio <strong>server</strong> del contenedor <strong>flash-cache-server</strong> utiliza dos variables de entorno que son utilizadas internamente para conectarse a Redis, <strong>REDIS_HOST</strong> y <strong>REDIS_PORT</strong>, en este caso el <strong>REDIS_HOST</strong> es el nombre del servicio, <strong>redis</strong>.
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                              <button class="accordion-button collapsed bg-dark-subtle text-white fw-bold"" type="button" data-bs-toggle="collapse" data-bs-target="#panel-collapse-8" aria-expanded="false" aria-controls="panel-collapse-8">
+                                  <code>restart</code>
+                              </button>
+                            </h2>
+                            <div id="panel-collapse-8" class="accordion-collapse collapse">
+                              <div class="accordion-body bg-dark text-white">
+                                Nos sirve para especificar la política de reinicio del contenedor, en este caso, <strong>always</strong>, esto signfica que el contenedor se reiniciará <strong>siempre</strong> si se detiene.
+                              </div>
+                            </div>
+                        </div>
+
+
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5" id="testing-mongodb-compass">
+                            <p class="fs-4 fw-bold ms-3">Iniciar los multi-contenedores con Docker Compose</p>
+                        </div>
+
+                        <p>Una ves creado nuestro archivo de docker-compose es hora de iniciar estos contenedores. Si nos damos cuenta el archivo docker-compose.yaml están agrupados y definidos nuestros contenedores, ahora, es tan facil como ejecutar un solo comando para iniciar toda esta agrupación.</p>
+
+                        <p>Necesitamos estar posicionados en nuestro directorio en donde se encuentra nuestro archivo docker-compose.yaml para ejecutar el siguiente comando: </p>
+
+                        <div class="pretty-code mt-5">
+                            <pre
+                                class="prettyprint w-50"
+                            ><code class="language-java">
+$ docker compose up
+                            </code></pre>
+                        </div>
+
+                        <p class="mt-5">Como resultado veremos el siguiente comportamiento: </p>
+
+                        <img class="mt-5 mb-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708703783/docker-compose/fsbnnscbnbi34tnlinti.png" width="100%"/>
+
+                        <p>Como podemos apreciar en la imágen se ha iniciado correctamente redis, nuestra aplicación flash-cache-client React corriendo en Vite y flash-cache-server que se ha conectado correctamente a Redis.</p>
+
+                        <p>Podemos comprobar ingresando desde tú navegador de preferencia a http://localhost:8000/ el cual es la aplicación de React que esta consumiendo la API de flash-cache-server.</p>
+
+                        <img class="mt-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708704174/docker-compose/haumo52kqg28hnqwskvp.png" width="100%"/>
+
+
+                        <div class="alert alert-success mt-5 fw-bold" role="alert">
+                            Al levantar nuestros contenedores, docker-compose lo que hace es crear una red por defecto para que nuestros contenedores se puedan comunicar entre si.
+
+                            Puedes leer más sobre redes y docker-compose en: <a href="https://docs.docker.com/compose/networking/">https://docs.docker.com/compose/networking/</a>
+                        </div>
+
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5" id="dockerfile-images">
+                            <p class="fs-4 fw-bold ms-3">Creando nuestras propias imágenes de Docker (flash-cache-server y flash-cache-client)</p>
+                        </div>
+
+                        <p><span class="text-warning fw-bold">OPCIONAL</span> <span class="fw-bold">|</span> Lo primero que necesitamos es estar logeados en nuestra cuenta de Docker Hub <span class="fw-bold">(sólo si quieres publicar tus imágenes en hub.docker.com, si no lo quieres hacer, salta este paso).</span> </p>
+
+                        <p class="mt-5">Ejecutar: </p>
+
+
+                        <div class="pretty-code">
+                          <pre
+                              class="prettyprint w-50"
+                          ><code class="language-java">
+$ docker login
+                          </code></pre>
+                        </div>
+
+                        <div class="mt-5 w-100 d-flex justify-content-center">
+                          <div class="alert alert-warning fw-bold w-50 text-center" role="alert">
+                            Deberás ingresar su nombre de usuario, contraseña o un access token.
+                          </div>
+                        </div>
+
+                        <p class="mt-5">A continuación, clonaremos el repositorio de GitHub del proyecto flash-cache para poder crear nuestra imagen. Si quieres hacerlo con otro proyecto con un lenguaje diferente, el procedimiento será similar siempre y cuando uses la forma correcta de ejecutar tu programa. </p>
+
+                        <div class="mt-5 w-100 d-flex justify-content-center">
+                          <div class="alert alert-success fw-bold w-50 text-center" role="alert">
+                            <a href="https://github.com/ivansanmartin/flash-cache.git" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Repositorio</a>
+                          </div>
+                        </div>
+
+
+                        <p class="mt-5">Clonamos mediante HTTPS: </p>
+
+                        <p>Creamos un directorio, en mi caso lo llamé flash-cache-project y dentro del directorio ejecute el comando <code>git clone https://github.com/ivansanmartin/flash-cache.git .</code> (Atentos al "." final, esto significa que vamos a clonar el repositorio en el directorio actual sin necesidad de crear un subdirectorio con el nombre del repositorio).</p>
+
+                        <img class="mt-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708956680/docker-compose/vucdbt16vanany1afpkf.png" width="100%"/>
+
+                        <p class="mt-5">Si nos fijamos, veremos dos directorios dentro: uno llamado "server" y otro "client". Empecemos creando la imagen de la aplicación web del lado del servidor.</p>
+
+                        <p>Ingresemos al directorio server. <code>cd server</code></p>
+
+                        <img class="mt-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708957681/docker-compose/wuonuvpylgpumcesxhau.png" width="100%">
+
+
+                        <p class="mt-5">Para empezar a crear nuestra imagen debemos crear el archivo Dockerfile en la raíz de nuestro directorio de "servidor". Si nos fijamos, a la hora de clonar el repositorio, este ya viene con el archivo Dockerfile. Lo que pueden hacer es eliminarlo y crear unos desde cero o mantener ese y quedarse con la explicación de las instrucciones que trae dentro que daré más adelante.</p>
+
+                        <p class="mt-4">Podemos abrir el directorio con Visual Studio Code desde la terminal. Ejecutar: <code>code .</code></p>
+
+
+                        <p class="mt-4">Una ves dentro del directorio desde VSC se verá algo así: </p>
+
+                        <img class="mt-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708958311/docker-compose/kfkr7umyyphjljeqjfw7.png" width="100%"/>
+
+                        <p class="mt-5">Podemos ingresar al archivo Dockerfile y revisar las instrucciones que trae dentro...</p>
+
+                        <img class="mt-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708958582/docker-compose/qhtrhkwtxtvei5xitgjp.png" width="100%">
+
+                        <p class="mt-5">Comencemos a explicar las instrucciones que tenemos dentro del archivo Dockerfile: </p>
+
+                        <p><code>FROM node:20.11.1-alpine3.19</code> | En esta instrucción estamos especificando la imagen que utilizaremos para ejecutar este proyecto. En este caso, este proyecto está creado con NodeJS, por lo cual utilizaremos la imágen de Node. Podemos encontrar más versiones en: <a href="https://hub.docker.com/_/node/tags">https://hub.docker.com/_/node/tags</a>.</p>
+
+                        <p><code>WORKDIR /app</code> | Aquí estamos indicando el directorio de trabajo que se utilizará a la hora de crear un contenedor con nuestra imagen de flash-cache-server.</p>
+
+                        <p><code>env REDIS_HOST=examplehost</code> | Con esta instrucción estamos creando variables de entorno que se podrán pasar como parámetros a la hora de que alguien quiera crear un contenedor con nuestra imagen. En este caso, REDIS_HOST es una variable de entorno que se utiliza en el proyecto para conectarse a Redis.</p>
+
+                        <p><code>COPY package.json ./</code> | En la siguiente instrucción estamos copiando el package.json que se encuentra en la raíz del directorio /server en la raíz del directorio de trabajo.</p>
+
+                        <p><code>RUN npm install</code> | Con esta instrucción estamos ejecutando el comando <code>npm install</code> propio de Node y npm (Node Package Manager), este lo que hará será buscar el package.json que copiamos para instalar todas las dependencias necesarias.</p>
+
+                        <p><code>COPY src .</code> | Copiando el directorio src de nuestro proyecto en la raíz del directorio de trabajo.</p>
+
+                        <p><code>EXPOSE 3000</code> | Lo que estamos haciendo aquí es indicar qué puertos se deben exponer desde el contenedor de Docker.</p>
+
+                        <p><code>CMD ["node", "server.js"]</code> | La instrucción <code>CMD</code> se utiliza para especificar el comando predeterminado que se ejecutará cuando el contenedor se inicie a partir de nuestra imagen.</p>
+
+
+                        
+                        <div class="mt-5 w-100 d-flex justify-content-center">
+                          <div class="alert alert-success fw-bold w-50 text-center" role="alert">
+                            <p>Puedes cambiar las instrucciones a tu gusto, según tus necesidades o stack que estés utilizando.</p>
+                          </div>
+                        </div>
+
+
+                        <p class="mt-5">A continuación procederemos a crear nuestra imagen desde la Terminal.</p>
+
+
+                        <div class="mt-5 w-100 d-flex justify-content-center">
+                          <div class="alert alert-warning fw-bold w-50 text-center" role="alert">
+                            <p class="m-3">Debemos estar situados en el mismo lugar en el que se encuentra nuestro Dockerfile.</p>
+                          </div>
+                        </div>
+
+                        <p class="mt-5">Una vez situados en el mismo nivel de nuestro archivo <code>Dockerfile</code> ejecutamos el siguiente comando:</p>
+
+                        <div class="pretty-code mt-5">
+                          <pre
+                              class="prettyprint w-50"
+                          ><code class="language-java">
+$ docker build --tag flash-cache-server .
+                          </code></pre>
+                        </div>
+
+                        <div class="mt-5 w-100 d-flex justify-content-center">
+                          <div class="alert alert-warning fw-bold w-50 text-center" role="alert">
+                            <p class="m-3">Con el "." final estamos indicando el contexto en el que se ejecutará el comando, esto hará que Docker busque el archivo <code>Dockerfile</code> dentro de ese contexto (en el directorio en el que estamos situados).</p>
+                          </div>
+                        </div>
+
+                        <p class="mt-5">Resultado: </p>
+
+                        <img class="mt-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708961453/docker-compose/ycopirdzmqf6ewjxihvd.png" width="100%"/>
+
+
+                        <p class="mt-5">La imagen se ha creado correctamente y para verificarlo podemos ejecutar el comando <code>docker image ls</code> (puedes ver el resultado de esto en la imagen).</p>
+
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5 mb-5" id="testing-mongodb-compass">
+                          <p class="fs-4 fw-bold ms-3">Probando nuestra imagen en un contenedor de Docker</p>
+                        </div>
+
+                        <p>A continuación haremos uso de nuestra imagen para ver el correcto funcionamineto.</p>
+
+                        <p class="mt-5">Ejecutamos: </p>
+
+                        <div class="pretty-code mt-5">
+                          <pre
+                              class="prettyprint w-50"
+                          ><code class="language-java">
+$ docker container run \\
+--name server \\
+-dp 3000:3000 \\
+--env REDIS_HOST=redis \\
+--env REDIS_PORT=6379 \\
+flash-cache-server
+
+                          </code></pre>
+                        </div>
+
+                        <p class="mt-5">Resultado: </p>
+                        
+                        <img class="mt-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1708962391/docker-compose/nssjwllfmpwmbvqxeupv.png" width="100%"/>
+
+                        <p class="mt-5">Apreciamos que nuestro contenedor se ha creado correctamente pero se encuentra en <strong>STATUS EXITED</strong>. Esto tiene una buena razón y es porque el proyecto de Node internamente se está intentando conectar a un servidor de Redis, cosa que no existe ya que no hemos creado ninguna red ni contenedor de Redis, pero con esto ya podemos ver que nuestra imagen funciona correctamente.</p>
+
+                        <div class="mt-5 w-100 d-flex justify-content-center">
+                          <div class="alert alert-warning fw-bold w-50 text-center" role="alert">
+                            <p class="m-3">Si quieres implementar una red y un contenedor de base de datos, lee mi otro blog: <a href="https://ivansanmartin.dev/blog/firsts-steps-docker" target="_blank">https://ivansanmartin.dev/blog/firsts-steps-docker</a></p>
+                          </div>
+                        </div>
+
+                    </div>
+
 
                 </div>
 
@@ -131,11 +500,13 @@
 
     <div class="date text-white mt-5 mb-5">
         <p class="text-end text-secondary fst-italic fw-semibold">
-            Blog realizado por Iván San Martín el 22-02-2024
+            Blog realizado por Iván San Martín el 24-02-2024
         </p>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 
 ` %> <%- include("../partials/base.ejs") %>
