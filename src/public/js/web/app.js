@@ -259,9 +259,9 @@ let blogs = new Blog("blogs", [
         description:
             "Creado nuestras propias imagenes y definiendo aplicaciones de multiples contenedores con Docker Compose",
         url: "/blog/docker-compose-and-dockerfile",
-        created_at: "25-02-2024",
-        button: "No disponible",
-        disabled: true,
+        created_at: "27-02-2024",
+        button: "Ver",
+        disabled: false,
         last: false,
     },
 ]);

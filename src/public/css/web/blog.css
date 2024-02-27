@@ -11,6 +11,11 @@
 
 }
 
+.wrapper .content .info {
+    width: 50%;
+
+}
+
 @media screen and (max-width: 768px) {
     .container {
         margin: 0;
@@ -27,6 +32,11 @@
     }
 
     .content .guide .uri-mongodb img {
+        width: 100%;
+
+    }
+
+    .wrapper .content .info {
         width: 100%;
 
     }
