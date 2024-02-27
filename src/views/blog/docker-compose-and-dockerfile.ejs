@@ -36,6 +36,10 @@
                 </li>
                 <li><a href="#docker-compose-yaml">Creando YAML de Docker Compose</a></li>
                 <li><a href="#dockerfile-images">Creando imágenes | Dockerfile</a></li>
+                <ol>
+                  <li><a href="#testing-images">Probando nuestra imagen en un contenedor de Docker</a></li>
+                </ol>
+                <li><a href="#publish-images-dockerhub">Publicando imagenes en Docker Hub</a></li>
             </ol>
         </div>
 
@@ -454,7 +458,7 @@ $ docker build --tag flash-cache-server .
 
                         <p class="mt-5">La imagen se ha creado correctamente y para verificarlo podemos ejecutar el comando <code>docker image ls</code> (puedes ver el resultado de esto en la imagen).</p>
 
-                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5 mb-5" id="testing-mongodb-compass">
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5 mb-5" id="testing-images">
                           <p class="fs-4 fw-bold ms-3">Probando nuestra imagen en un contenedor de Docker</p>
                         </div>
 
@@ -485,8 +489,61 @@ flash-cache-server
                         <div class="mt-5 w-100 d-flex justify-content-center">
                           <div class="alert alert-warning fw-bold w-50 text-center" role="alert">
                             <p class="m-3">Si quieres implementar una red y un contenedor de base de datos, lee mi otro blog: <a href="https://ivansanmartin.dev/blog/firsts-steps-docker" target="_blank">https://ivansanmartin.dev/blog/firsts-steps-docker</a></p>
+
+                            <p>Puedes ver también la documentación de esta misma imagen que creamos desde DockerHub: <a href="https://hub.docker.com/r/ivansanmartins/flash-cache-server" target="_blank" rel="noopener noreferrer">https://hub.docker.com/r/ivansanmartins/flash-cache-server</a></p>
                           </div>
                         </div>
+                        
+                        
+
+                        <p class="mt-5">Cabe decir que la forma de crear la imagen para flash-cache-client es el mismo procedimiento, por cual lo haremos más rapido sin muchas explicaciones.</p>
+
+                        <p>Así como lo hicimos con flash-cache-server, en este caso necesitamos estar situados en el directorio <strong>"client"</strong> del repositorio que clonamos desde Github.</p>
+
+                        <p>Vista: </p>
+
+                        <img class="mt-5 mb-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1709002082/docker-compose/z5hby5kfrmv66m0tnljp.png" width="100%"/>
+
+
+                        <p>Abrimos el directorio en VSC: <code>code .</code></p>
+
+                        <p>Vista: </p>
+
+                        <img class="mt-5 mb-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1709002281/docker-compose/va7wyxw9ty0rwz4twpxh.png" width="100%">
+
+                        <p>Si abrimos nuestro archivo Dockerfile, nos podremos percatar que tenemos las mismas instrucciones que flash-cache-server; solamente cambia el puerto expuesto y el comando de ejecución que se utilizará para correr React una vez montado el contenedor que utilizará esta imagen.</p>
+
+
+                        <p>Vista: </p>
+
+                        <img class="mt-5 mb-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1709002721/docker-compose/enm3f3qs1bdwohfkmovg.png" width="100%"/>
+
+                        <p>Ahora haremos el procedimiento de crear esta imagen. Recuerda que debemos estar en el mismo directorio en donde se encuentra el Dockerfile.</p>
+
+                        <p>Procedimiento: </p>
+
+                        <img class="mt-5 mb-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1709003508/docker-compose/rkdqi3krum9u9zap4nnb.png" width="100%"/>
+
+                        <p>Apreciamos que la imagen se ha creado correctamente. Ahora procedemos a crear un contenedor con ella.</p>
+
+                        <p>Montando el contenedor: </p>
+
+                        <img class="mt-5 mb-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1709003948/docker-compose/taaglc87puqqscl1n3mx.png" width="100%"/>
+
+                        <p>Podemos apreciar que el contenedor está en <strong>STATUS UP</strong>, esto significa que funciona correctamente y, además, vemos que los puertos están expuestos correctamente. Podemos ingresar a <code>http://localhost:8000</code> para corroborar.</p>
+
+
+                        <p>Probando:</p>
+
+                        <img class="mt-5 mb-5" src="https://res.cloudinary.com/dxupqwg5l/image/upload/v1709004083/docker-compose/styx7xnaasduscrzfr1o.png" width="100%">
+
+
+                        <p class="fw-bold">Sigamos al siguiente paso...</p>
+
+
+                        <div class="border border-primary border-top-0 border-end-0 border-bottom-0 mt-5" id="publish-images-dockerhub">
+                          <p class="fs-4 fw-bold ms-3">Publicando imagenes en Docker Hub</p>
+                      </div>
 
                     </div>
 
