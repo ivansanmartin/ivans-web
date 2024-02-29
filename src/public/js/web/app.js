@@ -219,7 +219,7 @@ let projects = new Project("projects", [
         technologies: ["js", "html", "css", "bootstrap"],
         url: "/projects/ivsm-panel",
         created_at: "23/01/2024",
-        last: true,
+        last: false,
     },
     {
         name: "flash-cache",
