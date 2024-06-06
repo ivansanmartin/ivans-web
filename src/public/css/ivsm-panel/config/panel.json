@@ -1,0 +1,67 @@
+{
+    "panel": {
+        "config": {
+            "sidebar": {
+                "navigation": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "description": "Home",
+                            "link_to": "/home"
+                        },
+                        {
+                            "id": "2",
+                            "description": "Configuration",
+                            "link_to": "/config",
+                            "sub_items": [
+                                {
+                                    "id": "1",
+                                    "description": "Users",
+                                    "link_to": "/config/users"
+                                },
+                                {
+                                    "id": "2",
+                                    "description": "Files",
+                                    "link_to": "/config/files"
+                                },
+                                {
+                                    "id": "3",
+                                    "description": "Test",
+                                    "link_to": "/config/files"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3",
+                            "description": "Panel",
+                            "link_to": "/config",
+                            "sub_items": [
+                                {
+                                    "id": "1",
+                                    "description": "Layout",
+                                    "link_to": "/panel/layout"
+                                },
+                                {
+                                    "id": "2",
+                                    "description": "Style",
+                                    "link_to": "/panel/style"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "profile": {
+                "navigation": {
+                    "items": [
+                        {
+                            "id": "1",
+                            "description": "Settings",
+                            "link_to": "/profile/settings"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

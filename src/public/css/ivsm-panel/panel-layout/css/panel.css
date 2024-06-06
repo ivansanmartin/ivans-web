@@ -184,8 +184,33 @@ body {
     background-color: var(--primary);
 }
 
+.sub-items {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+}
 
+.sub-items li:first-child {
+    margin-top: 20px;
+}
 
+.sub-items.show {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    max-height: 500px;
+}
+
+.arrow-effect svg {
+    transition: transform 0.4s ease;
+}
+
+.arrow-effect.arrow svg {
+    transform: rotate(90deg);
+}
 @media screen and (max-width: 750px) {
     .wrapper-layout aside .container-close {
         display: flex;
